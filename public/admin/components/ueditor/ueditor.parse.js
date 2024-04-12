@@ -525,7 +525,7 @@ UE.parse.register('table', function (utils) {
             }
             return array;
         }
-        //更新表格
+        //수정表格
         function updateTable(table) {
             //给第一行设置firstRow的样式이름,在排序图标的样式上使用到
             if(!utils.hasClass(table.rows[0], "firstRow")) {
@@ -724,7 +724,7 @@ UE.parse.register('charts',function( utils ){
     /**
      * 渲染图表
      * @param container 图表容器节点对象
-     * @param typeConfig 图表类형태配置
+     * @param typeConfig 图表종류형태配置
      * @param config 图表通用配置
      * */
     function renderChart ( container, typeConfig, config ) {
@@ -793,11 +793,11 @@ UE.parse.register('charts',function( utils ){
 
     }
 
-    //根据config해설出正确的类别和图表数据信息
+    //根据config해설出正确的종류别和图表数据信息
     function analysisConfig ( config ) {
 
         var series = [],
-        //数据类别
+        //数据종류别
             categories = [],
             result = [],
             data = config.data,

@@ -467,11 +467,11 @@ function indexOf(array, value) {
 }
 
 /**
- * 构造类继承关系
+ * 构造종류继承关系
  *
  * @memberOf module:zrender/core/util
- * @param {Function} clazz 源类
- * @param {Function} baseClazz 基类
+ * @param {Function} clazz 源종류
+ * @param {Function} baseClazz 基종류
  */
 function inherits(clazz, baseClazz) {
     var clazzPrototype = clazz.prototype;
@@ -1616,7 +1616,7 @@ function on(eventful, event, query, handler, context, isOnce) {
 }
 
 /**
- * 事件辅助类
+ * 事件辅助종류
  * @module zrender/core/event
  * @author Kener (@Kener-林峰, kener.linfeng@gmail.com)
  */
@@ -2288,7 +2288,7 @@ mixin(Handler, Eventful);
 mixin(Handler, Draggable);
 
 /**
- * 3x2矩阵관리类
+ * 3x2矩阵관리종류
  * @exports zrender/tool/matrix
  */
 
@@ -2962,7 +2962,7 @@ var easing = {
         return 0.5 * (Math.sqrt(1 - (k -= 2) * k) + 1);
     },
 
-    // 创建类似于弹簧在停止前来回振荡的动画
+    // 创建종류似于弹簧在停止前来回振荡的动画
     /**
     * @param {number} k
     * @return {number}
@@ -4965,7 +4965,7 @@ var Element = function (opts) { // jshint ignore:line
 Element.prototype = {
 
     /**
-     * 元素类형태
+     * 元素종류형태
      * Element type
      * @type {string}
      */
@@ -6406,7 +6406,7 @@ Storage.prototype = {
 
     /**
      * 返回所有图形的绘制队列
-     * @param {boolean} [update=false] 是否在返回前更新该数组
+     * @param {boolean} [update=false] 是否在返回前수정该数组
      * @param {boolean} [includeIgnore=false] 是否包含 ignore 的数组, 在 update 为 true 的时候有效
      *
      * 详见{@link module:zrender/graphic/Displayable.prototype.updateDisplayList}
@@ -6421,8 +6421,8 @@ Storage.prototype = {
     },
 
     /**
-     * 更新图形的绘制队列。
-     * 每次绘制前都会调用，该方法会先深度优先遍历整个树，更新所有Group和Shape的变换并且把所有可见的Shape保存到数组中，
+     * 수정图形的绘制队列。
+     * 每次绘制前都会调用，该方法会先深度优先遍历整个树，수정所有Group和Shape的变换并且把所有可见的Shape保存到数组中，
      * 最后根据绘制的优先级（zlevel > z > 插入顺序）排序得到绘制队列
      * @param {boolean} [includeIgnore=false] 是否包含 ignore 的数组
      */
@@ -8853,7 +8853,7 @@ RectText.prototype = {
 };
 
 /**
- * 可绘制的图形基类
+ * 可绘制的图形基종류
  * Base class of all displayable graphic objects
  * @module zrender/graphic/Displayable
  */
@@ -10269,7 +10269,7 @@ Painter.prototype = {
 };
 
 /**
- * 动画主类, 调度和管理所有动画控制器
+ * 动画主종류, 调度和管理所有动画控制器
  *
  * @module zrender/animation/Animation
  * @author pissang(https://github.com/pissang)
@@ -10747,10 +10747,10 @@ each$1(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'
 });
 
 /**
- * 为控制类实例初始化dom 事件处理函数
+ * 为控制종류实例初始化dom 事件处理函数
  *
  * @inner
- * @param {module:zrender/Handler} instance 控制类实例
+ * @param {module:zrender/Handler} instance 控制종류实例
  */
 function initDomHandler(instance) {
     each$1(touchHandlerNames, function (name) {
@@ -13518,7 +13518,7 @@ PathProxy.prototype = {
 
             switch (cmd) {
                 case CMD.M:
-                    // moveTo 命令重新创建一个新的 subpath, 并且更新新的起点
+                    // moveTo 命令重新创建一个新的 subpath, 并且수정新的起点
                     // 在 closePath 的时候使用
                     x0 = data[i++];
                     y0 = data[i++];
@@ -14142,7 +14142,7 @@ function containPath(data, lineWidth, isStroke, x, y) {
 
         switch (cmd) {
             case CMD$1.M:
-                // moveTo 命令重新创建一个新的 subpath, 并且更新新的起点
+                // moveTo 命令重新创建一个新的 subpath, 并且수정新的起点
                 // 在 closePath 的时候使用
                 x0 = data[i++];
                 y0 = data[i++];
@@ -24794,8 +24794,8 @@ var lang = {
         series: {
             single: {
                 prefix: '',
-                withName: '图表类형태是{seriesType}，表示{seriesName}。',
-                withoutName: '图表类형태是{seriesType}。'
+                withName: '图表종류형태是{seriesType}，表示{seriesName}。',
+                withoutName: '图表종류형태是{seriesType}。'
             },
             multiple: {
                 prefix: '它由{seriesCount}个图表系列组成。',
@@ -41180,7 +41180,7 @@ var BaseBarSeries = SeriesModel.extend({
         // barWidth: null,
         // 柱间距离，默认为柱形宽度的30%，可设固定值
         // barGap: '30%',
-        // 类目间柱形距离，默认为类目间距的20%，可设固定值
+        // 종류目间柱形距离，默认为종류目间距的20%，可设固定值
         // barCategoryGap: '20%',
         // label: {
         //      show: false
@@ -43174,7 +43174,7 @@ SeriesModel.extend({
         // Geo coordinate system
         // geoIndex: 0,
 
-        // symbol: null,        // 图形类형태
+        // symbol: null,        // 图形종류형태
         symbolSize: 10,          // 图形大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
         // symbolRotate: null,  // 图形旋转控制
 
@@ -45982,7 +45982,7 @@ extendComponentModel({
 
             // type 为 line 的时候有效，指定 tooltip line 所在的轴，可选
             // 可选 'x' | 'y' | 'angle' | 'radius' | 'auto'
-            // 默认 'auto'，会选择类형태为 category 的轴，对于双数值轴，笛卡尔坐标系会默认选择 x 轴
+            // 默认 'auto'，会选择종류형태为 category 的轴，对于双数值轴，笛卡尔坐标系会默认选择 x 轴
             // 极坐标系会默认选择 angle 轴
             axis: 'auto',
 

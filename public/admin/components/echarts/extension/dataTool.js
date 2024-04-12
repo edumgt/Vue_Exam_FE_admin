@@ -92,11 +92,11 @@ var nativeMap = arrayProto.map;
 
 
 /**
- * 构造类继承关系
+ * 构造종류继承关系
  *
  * @memberOf module:zrender/core/util
- * @param {Function} clazz 源类
- * @param {Function} baseClazz 基类
+ * @param {Function} clazz 源종류
+ * @param {Function} baseClazz 基종류
  */
 
 

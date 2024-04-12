@@ -162,11 +162,11 @@
         return _;
     });
     /**
-     * @fileOverview 基础类方法。
+     * @fileOverview 基础종류方法。
      */
     
     /**
-     * Web Uploader内部类的详细说明，以下提及的功能类，都可以在`WebUploader`这个变量中访问到。
+     * Web Uploader内部종류的详细说明，以下提及的功能종류，都可以在`WebUploader`这个变量中访问到。
      *
      * As you know, Web Uploader的每个文件都是用过[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)规范中的`define`组织起来的, 每个Module都会有个module id.
      * 默认module id该文件的路径，而此路径将会转化成이름字空间存放在WebUploader中。如：
@@ -217,7 +217,7 @@
     
     
         /**
-         * 基础类，提供一些简单常用的方法。
+         * 基础종류，提供一些简单常用的方法。
          * @class Base
          */
         return {
@@ -294,16 +294,16 @@
             })( navigator.userAgent ),
     
             /**
-             * 实现类与类之间的继承。
+             * 实现종류与종류之间的继承。
              * @method inherits
              * @grammar Base.inherits( super ) => child
              * @grammar Base.inherits( super, protos ) => child
              * @grammar Base.inherits( super, protos, statics ) => child
-             * @param  {Class} super 父类
-             * @param  {Object | Function} [protos] 子类或者对象。如果对象中包含constructor，子类将是用此属性值。
-             * @param  {Function} [protos.constructor] 子类构造器，不指定的话将创建个临时的直接执行父类构造器的方法。
+             * @param  {Class} super 父종류
+             * @param  {Object | Function} [protos] 子종류或者对象。如果对象中包含constructor，子종류将是用此属性值。
+             * @param  {Function} [protos.constructor] 子종류构造器，不指定的话将创建个临时的直接执行父종류构造器的方法。
              * @param  {Object} [statics] 静态属性或方法。
-             * @return {Class} 返回子类。
+             * @return {Class} 返回子종류。
              * @example
              * function Person() {
              *     console.log( 'Super' );
@@ -318,14 +318,14 @@
              *     }
              * });
              *
-             * // 因为没有指定构造器，父类的构造器将会执行。
+             * // 因为没有指定构造器，父종류的构造器将会执行。
              * var instance = new Manager();    // => Super
              *
-             * // 继承子父类的方法
+             * // 继承子父종류的方法
              * instance.hello();    // => hello
              * instance.world();    // => World
              *
-             * // 子类的__super__属性指向父类
+             * // 子종류的__super__属性指向父종류
              * console.log( Manager.__super__ === Person );    // => true
              */
             inherits: function( Super, protos, staticProtos ) {
@@ -347,7 +347,7 @@
     
                 /* jshint camelcase: false */
     
-                // 让子类的__super__属性指向父类。
+                // 让子종류的__super__属性指向父종류。
                 child.__super__ = Super.prototype;
     
                 // 构建原형태，추가原형태方法或属性。
@@ -480,7 +480,7 @@
         };
     });
     /**
-     * 事件处理类，可以独立使用，也可以扩展给对象使用。
+     * 事件处理종류，可以独立使用，也可以扩展给对象使用。
      * @fileOverview Mediator
      */
     define('mediator',[
@@ -549,8 +549,8 @@
              * 如果`callback`中，某一个方法`return false`了，则后续的其他`callback`都不会被执行到。
              * 切会影响到`trigger`方法的返回值，为`false`。
              *
-             * `on`还可以用来추가一个特殊事件`all`, 这样所有的事件触发都会响应到。同时此类`callback`中的arguments有一个不同处，
-             * 就是第一个参数为`type`，记录当前是什么事件在触发。此类`callback`的优先级比脚低，会再正常`callback`执行完后触发。
+             * `on`还可以用来추가一个特殊事件`all`, 这样所有的事件触发都会响应到。同时此종류`callback`中的arguments有一个不同处，
+             * 就是第一个参数为`type`，记录当前是什么事件在触发。此종류`callback`的优先级比脚低，会再正常`callback`执行完后触发。
              * ```javascript
              * obj.on( 'all', function( type, arg1, arg2 ) {
              *     console.log( type, arg1, arg2 ); // => 'testa', 'arg1', 'arg2'
@@ -696,7 +696,7 @@
         }, protos );
     });
     /**
-     * @fileOverview Uploader上传类
+     * @fileOverview Uploader上传종류
      */
     define('uploader',[
         'base',
@@ -706,7 +706,7 @@
         var $ = Base.$;
     
         /**
-         * 上传入口类。
+         * 上传入口종류。
          * @class Uploader
          * @constructor
          * @grammar new Uploader( opts ) => Uploader
@@ -899,7 +899,7 @@
                 return null;
             };
     
-        // 接口类。
+        // 接口종류。
         function Runtime( options ) {
             this.options = $.extend({
                 container: document.body
@@ -953,7 +953,7 @@
     
         /**
          * 추가Runtime实现。
-         * @param {String} type    类형태
+         * @param {String} type    종류형태
          * @param {Runtime} factory 具体Runtime实现。
          */
         Runtime.addRuntime = function( type, factory ) {
@@ -1016,7 +1016,7 @@
                     }
     
                     for ( i in obj ) {
-                        // 有些类형태不能重用，比如filepicker.
+                        // 有些종류형태不能重用，比如filepicker.
                         if ( standalone && obj[ i ].__standalone ) {
                             continue;
                         }
@@ -1187,7 +1187,7 @@
             this.name = file.name || ('untitled' + uid++);
             ext = rExt.exec( file.name ) ? RegExp.$1.toLowerCase() : '';
     
-            // todo 支持其他类형태文件的转换。
+            // todo 支持其他종류형태文件的转换。
     
             // 如果有mimetype, 但是文件이름里面没有找出后缀规律
             if ( !ext && this.type ) {
@@ -1343,7 +1343,7 @@
     });
     
     /**
-     * @fileOverview 组件基类。
+     * @fileOverview 组件基종류。
      */
     define('widgets/widget',[
         'base',
@@ -1381,7 +1381,7 @@
     
             init: Base.noop,
     
-            // 类Backbone的事件监听声明，监听uploader实例上的事件
+            // 종류Backbone的事件监听声明，监听uploader实例上的事件
             // widget直接无法监听事件，事件只能通过uploader来传递
             invoke: function( apiName, args ) {
     
@@ -1539,7 +1539,7 @@
              * @property {Arroy} [accept=null]
              * @namespace options
              * @for Uploader
-             * @description 指定接受哪些类형태的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
+             * @description 指定接受哪些종류형태的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
              *
              * * `title` {String} 文字描述
              * * `extensions` {String} 允许的文件后缀，不带点，多个用逗번호分割。
@@ -1797,7 +1797,7 @@
              *     preserveHeaders: false,
              *
              *     // 为空的话则保留原有图片格式。
-             *     // 否则强制转换成指定的类형태。
+             *     // 否则强制转换成指定的종류형태。
              *     type: 'image/jpeg'
              * }
              * ```
@@ -1811,7 +1811,7 @@
                 preserveHeaders: false,
     
                 // 为空的话则保留原有图片格式。
-                // 否则强制转换成指定的类형태。
+                // 否则强制转换成指定的종류형태。
                 // IE 8下面 base64 大小不能超过 32K 否则미리보기失败，而非 jpeg 编码的图片很可
                 // 能会超过 32k, 所以这里设置成미리보기的时候都是 image/jpeg
                 type: 'image/jpeg'
@@ -2024,7 +2024,7 @@
         }
     
         /**
-         * 文件类
+         * 文件종류
          * @class File
          * @constructor 构造函数
          * @grammar new File( source ) => File
@@ -2048,7 +2048,7 @@
             this.size = source.size || 0;
     
             /**
-             * 文件MIMETYPE类형태，与文件类형태的对应关系请参考[http://t.cn/z8ZnFny](http://t.cn/z8ZnFny)
+             * 文件MIMETYPE종류형태，与文件종류형태的对应关系请参考[http://t.cn/z8ZnFny](http://t.cn/z8ZnFny)
              * @property type
              * @type {string}
              * @default 'application'
@@ -2126,7 +2126,7 @@
              * 获取文件상태
              * @return {File.Status}
              * @example
-                     文件상태具体包括以下几种类형태：
+                     文件상태具体包括以下几种종류형태：
                      {
                          // 初始化
                         INITED:     0,
@@ -2162,7 +2162,7 @@
         Mediator.installTo( WUFile.prototype );
     
         /**
-         * 文件상태值，具体包括以下几种类형태：
+         * 文件상태值，具体包括以下几种종류형태：
          * * `inited` 初始상태
          * * `queued` 已经进入队列, 等待上传
          * * `progress` 上传中
@@ -2312,7 +2312,7 @@
             },
     
             /**
-             * 获取指定类형태的文件목록, 목록中每一个成员为[File](#WebUploader:File)对象。
+             * 获取指定종류형태的文件목록, 목록中每一个成员为[File](#WebUploader:File)对象。
              * @grammar getFiles( [status1[, status2 ...]] ) => Array
              * @method getFiles
              * @param {String} [status] [文件상태值](#WebUploader:File:File.Status)
@@ -2532,12 +2532,12 @@
     
                 file = me._wrapFile( file );
     
-                // 不过类형태判断允许不允许，先派送 `beforeFileQueued`
+                // 不过종류형태判断允许不允许，先派送 `beforeFileQueued`
                 if ( !me.owner.trigger( 'beforeFileQueued', file ) ) {
                     return;
                 }
     
-                // 类형태不匹配，则派送错误事件，并返回。
+                // 종류형태不匹配，则派送错误事件，并返回。
                 if ( !me.acceptFile( file ) ) {
                     me.owner.trigger( 'error', 'Q_TYPE_DENIED', file );
                     return;
@@ -3175,7 +3175,7 @@
                     fn = function( val ) {
                         me._promise = null;
     
-                        // 有可能是reject过来的，所以要检测val的类형태。
+                        // 有可能是reject过来的，所以要检测val的종류형태。
                         val && val.file && me._startSend( val );
                         Base.nextTick( me.__tick );
                     };
@@ -3345,7 +3345,7 @@
              * @event uploadAccept
              * @param {Object} object
              * @param {Object} ret 服务端的返回数据，json格式，如果服务端不是json格式，从ret._raw中取数据，自行해설。
-             * @description 当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为`false`, 则此文件将派送`server`类형태的`uploadError`事件。
+             * @description 当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为`false`, 则此文件将派送`server`종류형태的`uploadError`事件。
              * @for  Uploader
              */
     

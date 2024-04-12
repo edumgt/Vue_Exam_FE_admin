@@ -75,10 +75,10 @@ _p[0] = {
          * @grammar new kity.Animator(option)
          *
          * @param  {any}      beginValue|opt.beginValue
-         *     动画的起始值，允许的类형태有数字、数组、字面量、kity.Point、kity.Vector、kity.Box、kity.Matrix
+         *     动画的起始值，允许的종류형태有数字、数组、字面量、kity.Point、kity.Vector、kity.Box、kity.Matrix
          *
          * @param  {any}      finishValue|opt.beginValue
-         *     动画的结束值，类형태应于起始值相同
+         *     动画的结束值，종류형태应于起始值相同
          *
          * @param  {Function} setter|opt.setter
          *     值的使用函数，接受三个参数: function(target, value, timeline)
@@ -585,7 +585,7 @@ _p[2] = {
      * kity.requestFrame(function(frame) {
      *     console.log('平均帧率:' + frame.elapsed / (frame.index + 1));
      *
-     *     // 更新或渲染动作
+     *     // 수정或渲染动作
      *
      *     frame.next(); //继续执行下一帧
      * });
@@ -726,7 +726,7 @@ _p[3] = {
              * @property motionPath
              * @for kity.MotionAnimator
              * @type  {kity.Path|String|PathSegment}
-             * @description 运动沿着的路径，可以在动画过程中更新
+             * @description 运动沿着的路径，可以在动画过程中수정
              */
                 this.motionPath = path;
             }
@@ -1572,7 +1572,7 @@ _p[11] = {
         /**
      * @class kity.Class
      * @catalog core
-     * @description 所有 kity 类的基类
+     * @description 所有 kity 종류的基종류
      * @abstract
      */
         function Class() {}
@@ -1583,9 +1583,9 @@ _p[11] = {
      * @for kity.Class
      * @protected
      * @grammar base(name, args...) => {any}
-     * @description 调用父类指定이름的函数
+     * @description 调用父종류指定이름的函数
      * @param {string} name 函数的이름
-     * @param {parameter} args... 传递给父类函数的参数
+     * @param {parameter} args... 传递给父종류函数的参数
      *
      * @example
      *
@@ -1619,8 +1619,8 @@ _p[11] = {
      * @for kity.Class
      * @protected
      * @grammar callBase(args...) => {any}
-     * @description 调用父类同이름函数
-     * @param {parameter} args... 传递到父类同이름函数的参数
+     * @description 调用父종류同이름函数
+     * @param {parameter} args... 传递到父종류同이름函数的参数
      *
      * @example
      *
@@ -1704,7 +1704,7 @@ _p[11] = {
      * @method getType()
      * @for kity.Class
      * @grammar getType() => {string}
-     * @description 获得对象的类형태
+     * @description 获得对象的종류형태
      *
      * @example
      *
@@ -1723,7 +1723,7 @@ _p[11] = {
      * @method getClass()
      * @for kity.Class
      * @grammar getClass() => {Class}
-     * @description 获得对象的类
+     * @description 获得对象的종류
      *
      * @example
      *
@@ -1737,12 +1737,12 @@ _p[11] = {
         Class.prototype.getClass = function() {
             return this.constructor;
         };
-        // 检查基类是否调用了父类的构造函数
+        // 检查基종류是否调用了父종류的构造函数
         // 该检查是弱检查，假如调用的代码被注释了，同样能检查成功（这个特性可用于知道建议调用，但是出于某些原因不想调用的情况）
         function checkBaseConstructorCall(targetClass, classname) {
             var code = targetClass.toString();
             if (!/this\.callBase/.test(code)) {
-                throw new Error(classname + " : 类构造函数没有调用父类的构造函数！为了安全，请调用父类的构造函数");
+                throw new Error(classname + " : 종류构造函数没有调用父종류的构造函数！为了安全，请调用父종류的构造函数");
             }
         }
         var KITY_INHERIT_FLAG = "__KITY_INHERIT_FLAG_" + +new Date();
@@ -1798,19 +1798,19 @@ _p[11] = {
         /**
      * @method kity.createClass()
      * @grammar kity.createClass(classname, defines) => {Class}
-     * @description 创建一个类
-     * @param  {string} classname 类이름，用于调试的时候查看，可选
-     * @param  {object} defines   类定义
+     * @description 创建一个종류
+     * @param  {string} classname 종류이름，用于调试的时候查看，可选
+     * @param  {object} defines   종류定义
      *      defines.base {Class}
-     *          定义的类的基类，如果不配置，则表示基类为 kity.Class
+     *          定义的종류的基종류，如果不配置，则表示基종류为 kity.Class
      *      defines.mixins {Class[]}
-     *          定义的类要融合的类목록
+     *          定义的종류要融合的종류목록
      *      defines.constructor {Function}
-     *          定义类的构造函数，如果父类显式定义了构造函数，需要在构造函数中使用 callBase() 方法调用父类的构造函数
+     *          定义종류的构造函数，如果父종류显式定义了构造函数，需要在构造函数中使用 callBase() 方法调用父종류的构造函数
      *      defines.* {Function}
-     *          定义类的其它函数
+     *          定义종류的其它函数
      *
-     * @example 创建一个类
+     * @example 创建一个종류
      *
      * ```js
      * var Animal = kity.createClass('Animal', {
@@ -1826,13 +1826,13 @@ _p[11] = {
      * console.log(a.toString()); // "kity"
      * ```
      *
-     * @example 继承一个类
+     * @example 继承一个종류
      *
      * ```js
      * var Cat = kity.createClass('Cat', {
      *     base: Animal,
      *     constructor: function(name, color) {
-     *         // 调用父类构造函数
+     *         // 调用父종류构造函数
      *         this.callBase(name);
      *     },
      *     toString: function() {
@@ -1844,7 +1844,7 @@ _p[11] = {
      * console.log(cat.toString()); // "A black cat, kity"
      * ```
      *
-     * @example 混合类的能力
+     * @example 混合종류的能力
      * ```js
      * var Walkable = kity.createClass('Walkable', {
      *     constructor: function() {
@@ -1903,7 +1903,7 @@ _p[11] = {
         /**
      * @method kity.extendClass()
      * @grammar kity.extendClass(clazz, extension) => {Class}
-     * @description 拓展一个已有的类
+     * @description 拓展一个已有的종류
      *
      * @example
      *
@@ -2114,7 +2114,7 @@ _p[12] = {
          *
          * console.log(target === source); // false
          * console.log(target.key1 === source.key1); // false
-         * console.log(target.key3 === source.key3); // true，因为是值类형태
+         * console.log(target.key3 === source.key3); // true，因为是值종류형태
          * ```
          */
             copy: function copy(obj) {
@@ -2255,49 +2255,49 @@ _p[12] = {
      * @method isString()
      * @for kity.Utils
      * @grammar isString(unknown) => {boolean}
-     * @description 判断一个值是否为字符串类형태
+     * @description 判断一个值是否为字符串종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isFunction()
      * @for kity.Utils
      * @grammar isFunction(unknown) => {boolean}
-     * @description 判断一个值是否为函数类형태
+     * @description 判断一个值是否为函数종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isArray()
      * @for kity.Utils
      * @grammar isArray(unknown) => {boolean}
-     * @description 判断一个值是否为数组类형태
+     * @description 判断一个值是否为数组종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isNumber()
      * @for kity.Utils
      * @grammar isNumber(unknown) => {boolean}
-     * @description 判断一个值是否为数字类형태
+     * @description 判断一个值是否为数字종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isRegExp()
      * @for kity.Utils
      * @grammar isRegExp(unknown) => {boolean}
-     * @description 判断一个值是否为正则表达式类형태
+     * @description 判断一个值是否为正则表达式종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isObject()
      * @for kity.Utils
      * @grammar isObject(unknown) => {boolean}
-     * @description 判断一个值是否为对象类형태
+     * @description 判断一个值是否为对象종류형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isBoolean()
      * @for kity.Utils
      * @grammar isBoolean(unknown) => {boolean}
-     * @description 判断一个值是否为布尔类형태
+     * @description 判断一个值是否为布尔종류형태
      * @param  {any} unknown 要判断的值
      */
         utils.each([ "String", "Function", "Array", "Number", "RegExp", "Object", "Boolean" ], function(v) {
@@ -2325,7 +2325,7 @@ _p[13] = {
             }
         });
         Utils.extend(ColorMatrixEffect, {
-            // 类형태常量
+            // 종류형태常量
             TYPE_MATRIX: "matrix",
             TYPE_SATURATE: "saturate",
             TYPE_HUE_ROTATE: "hueRotate",
@@ -2397,8 +2397,8 @@ _p[15] = {
 
 //src/filter/effect/effect.js
 /*
- * 效果类
- * 该类형태的对象不存储任何内部属性， 所有관리都是针对该类对象所维护的节点进行的
+ * 效果종류
+ * 该종류형태的对象不存储任何内部属性， 所有관리都是针对该종류对象所维护的节点进行的
  */
 _p[16] = {
     value: function(require, exports, module) {
@@ -2537,7 +2537,7 @@ _p[19] = {
 
 //src/filter/filter.js
 /**
- * Filter 基类
+ * Filter 基종류
  */
 _p[20] = {
     value: function(require, exports, module) {
@@ -2703,7 +2703,7 @@ _p[23] = {
          *
          * @grammar new kity.Bezier(bezierPoints)
          *
-         * @param  {kity.BezierPoints[]} bezierPoints 贝塞尔点集合，每个元素应该是 {kity.BezierPoint} 类형태
+         * @param  {kity.BezierPoints[]} bezierPoints 贝塞尔点集合，每个元素应该是 {kity.BezierPoint} 종류형태
          *
          * @example
          *
@@ -2859,7 +2859,7 @@ _p[24] = {
                     left: x - oldVertex.x,
                     top: y - oldVertex.y
                 };
-                // 更新
+                // 수정
                 this.forward.setPoint(oldForward.x + distance.left, oldForward.y + distance.top);
                 this.backward.setPoint(oldBackward.x + distance.left, oldBackward.y + distance.top);
                 this.vertex.setPoint(x, y);
@@ -2877,7 +2877,7 @@ _p[24] = {
          */
             setForward: function(x, y) {
                 this.forward.setPoint(x, y);
-                //更新后置点
+                //수정后置点
                 if (this.smooth) {
                     this.updateAnother(this.forward, this.backward);
                 }
@@ -2897,7 +2897,7 @@ _p[24] = {
          */
             setBackward: function(x, y) {
                 this.backward.setPoint(x, y);
-                //更新前置点
+                //수정前置点
                 if (this.smooth) {
                     this.updateAnother(this.backward, this.forward);
                 }
@@ -2932,7 +2932,7 @@ _p[24] = {
             /**
          * @private
          *
-         * 根据前方控制点或后方控制点更新另一方
+         * 根据前方控制点或后方控制点수정另一方
          */
             updateAnother: function(p, q) {
                 var v = this.getVertex(), pv = Vector.fromPoints(p.getPoint(), v), vq = Vector.fromPoints(v, q.getPoint());
@@ -2998,7 +2998,7 @@ _p[24] = {
             /**
          * @private
          *
-         * 联动更新相关的贝塞尔曲线
+         * 联动수정相关的贝塞尔曲线
          */
             update: function() {
                 if (!this.container) {
@@ -3463,7 +3463,7 @@ _p[27] = {
          * @grammar clipWidth(clip) => {this}
          *
          * @param {kity.Clip|kity.Shape} clip 要用于裁切当前图形的图形；
-         *     如果 clip 本身是一个裁切对象（kity.Clip 类형태），则直接裁切；
+         *     如果 clip 本身是一个裁切对象（kity.Clip 종류형태），则直接裁切；
          *     否则将创建新的裁切包含给定的图形，然后对当前图形进行裁切
          *
          * @example
@@ -4546,7 +4546,7 @@ _p[33] = {
                                 targetObject.off(type, fn);
                             }
                         }
-                        // 如果회원handler里return了false， 则该节点上的此后的同类형태事件将不再执行
+                        // 如果회원handler里return了false， 则该节点上的此后的同종류형태事件将不再执行
                         return result;
                     }, targetObject);
                 };
@@ -4557,7 +4557,7 @@ _p[33] = {
             }
             if (!USER_HANDLER_CACHE[eid][type]) {
                 USER_HANDLER_CACHE[eid][type] = [ handler ];
-                // 绑定对应类형태的事件
+                // 绑定对应종류형태的事件
                 // dom对象利用dom event进行处理， 非dom对象， 由消息分发机制处理
                 if (!!node && "on" + type in node) {
                     bindDomEvent(node, type, INNER_HANDLER_CACHE[eid][type]);
@@ -5135,7 +5135,7 @@ _p[34] = {
      * @return {Point} p
      *     p.x: x 坐标
      *     p.y: y 坐标
-     *     p.tan: 在 t 处的切线方向（类형태为 kity.Vector，模为 1）
+     *     p.tan: 在 t 处的切线方向（종류형태为 kity.Vector，模为 1）
      */
         g.pointAtBezier = function(bezierArray, t) {
             var b2t = cutBezier(bezierArray, t)[0];
@@ -5337,7 +5337,7 @@ _p[34] = {
      * @return {Point} p
      *     p.x: x 坐标
      *     p.y: y 坐标
-     *     p.tan: 在 t 处的切线方向（类형태为 kity.Vector，模为 1）
+     *     p.tan: 在 t 处的切线方向（종류형태为 kity.Vector，模为 1）
      */
         g.pointAtPath = function(path, t) {
             if (!path.isCurve) {
@@ -6802,7 +6802,7 @@ _p[51] = {
 
 //src/graphic/poly.js
 /*
- * 通过点来决定图形的公共父类
+ * 通过点来决定图形的公共父종류
  */
 _p[52] = {
     value: function(require, exports, module) {
@@ -7142,7 +7142,7 @@ _p[57] = {
 /**
  * @fileOverview
  *
- * 资源节点基类
+ * 资源节点基종류
  *
  * @author: techird
  * @copyright: Baidu FEX, 2014
@@ -7570,7 +7570,7 @@ _p[61] = {
 
 //src/graphic/shapeevent.js
 /*
- * 图形事件包装类
+ * 图形事件包装종류
  * */
 _p[62] = {
     value: function(require, exprots, module) {
@@ -8445,7 +8445,7 @@ _p[75] = {
                     // firefox:
                     // 1. viewBox 没有设置过的时候获得的是 null
                     // 2. svg 标签没有指定绝对大小的时候 clientWidth 和 clientHeigt 为 0，需要在父容器上查找
-                    // TODO: 第 2 条取得的不准确（假如有 padding 之类的）
+                    // TODO: 第 2 条取得的不准确（假如有 padding 之종류的）
                     return {
                         x: 0,
                         y: 0,

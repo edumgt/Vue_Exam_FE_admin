@@ -117,7 +117,7 @@
         onlineImage = onlineImage || new OnlineImage('imageList');
     }
 
-    /* 更新背景色设置面板 */
+    /* 수정背景色设置面板 */
     function updateFormState (radio, color, url, align, x, y) {
         var nocolorRadio = $G('nocolorRadio'),
             coloredRadio = $G('coloredRadio');
@@ -154,7 +154,7 @@
         $G('custom').style.display = coloredRadio.checked && $G('url').value && $G('repeatType').value == 'self' ? '':'none';
     }
 
-    /* 更新背景颜色 */
+    /* 수정背景颜色 */
     function updateBackground () {
         if ($G('coloredRadio').checked) {
             var color = domUtils.getStyle($G("colorPicker"), "background-color"),

@@ -270,7 +270,7 @@ UE.I18N['zh-cn'] = {
             'lang_imgLoading':"　图片加载中……",
             'lang_start_upload':"开始上传",
             'lock':{'title':"锁定宽高比例"}, //属性
-            'searchType':{'title':"图片类형태", 'options':["新闻", "壁纸", "表情", "头像"]}, //select的option
+            'searchType':{'title':"图片종류형태", 'options':["新闻", "壁纸", "表情", "头像"]}, //select的option
             'searchTxt':{'value':"请输入搜索关键词"},
             'searchBtn':{'value':"百度一下"},
             'searchReset':{'value':"清空搜索"},
@@ -381,7 +381,7 @@ UE.I18N['zh-cn'] = {
         'delSuccessFile':'从成功队列中移除',
         'delFailSaveFile':'移除保存失败文件',
         'statusPrompt':' 个文件已上传！ ',
-        'flashVersionError':'当前Flash版本过低，请更新FlashPlayer后重试！',
+        'flashVersionError':'当前Flash版本过低，请수정FlashPlayer后重试！',
         'flashLoadingError':'Flash加载失败!请检查路径或网络상태',
         'fileUploadReady':'等待上传……',
         'delUploadQueue':'从上传队列中移除',
@@ -390,7 +390,7 @@ UE.I18N['zh-cn'] = {
         'delFailFile':'移除失败文件',
         'fileSizeLimit':'文件大小超出限制！',
         'emptyFile':'空文件无法上传！',
-        'fileTypeError':'文件类형태不允许！',
+        'fileTypeError':'文件종류형태不允许！',
         'unknownError':'未知错误！',
         'fileUploading':'上传中，请等待……',
         'cancelUpload':'取消上传',
@@ -496,7 +496,7 @@ UE.I18N['zh-cn'] = {
             'lang_chart_data_unit': '数据单位',
             'lang_chart_data_unit_title': '单位：',
             'lang_chart_data_unit_description': '显示在每个数据点上的数据的单位， 比如： 温度的单位 ℃',
-            'lang_chart_type': '图表类형태：',
+            'lang_chart_type': '图表종류형태：',
             'lang_prev_btn': '上一个',
             'lang_next_btn': '下一个'
         }

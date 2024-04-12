@@ -118,7 +118,7 @@ const constantRoutes = [
         path: 'question/edit/singleChoice',
         component: () => import('@/views/exam/question/edit/single-choice'),
         name: 'singleChoicePage',
-        meta: { title: '单选문항수정', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '단일 선택문항수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       },
       {

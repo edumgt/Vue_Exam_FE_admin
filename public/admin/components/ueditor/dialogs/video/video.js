@@ -92,7 +92,7 @@
     }
 
     /**
-     * 依据传入的align值更新按钮信息
+     * 依据传入的align值수정按钮信息
      * @param align
      */
     function updateAlignButton( align ) {
@@ -149,7 +149,7 @@
     }
 
     /**
-     * 找到id下具有focus类的节点并返回该节点下的某个属性
+     * 找到id下具有focus종류的节点并返回该节点下的某个属性
      * @param id
      * @param returnProperty
      */

@@ -3440,7 +3440,7 @@ _p[5] = {
 };
 
 /**
- * 定义公式中各种对象的类형태
+ * 定义公式中各种对象的종류형태
  */
 _p[6] = {
     value: function() {
@@ -3454,7 +3454,7 @@ _p[6] = {
 };
 
 /**
- * 定义公式中上下标的类형태
+ * 定义公式中上下标的종류형태
  */
 _p[7] = {
     value: function() {
@@ -3925,7 +3925,7 @@ _p[20] = {
 };
 
 /**
- * 基础表达式， 该类是表达式和관리数的高层抽象
+ * 基础表达式， 该종류是表达式和관리数的高层抽象
  * @abstract
  */
 _p[21] = {
@@ -5311,7 +5311,7 @@ _p[40] = {
             setType: function(type) {
                 this.opType = type | 0;
             },
-            // 취소类형태
+            // 취소종류형태
             resetType: function() {
                 this.opType = 1;
             },
@@ -5361,7 +5361,7 @@ _p[40] = {
 };
 
 /**
- * 관리符抽象类
+ * 관리符抽象종류
  * @abstract
  */
 _p[41] = {
@@ -5392,7 +5392,7 @@ _p[41] = {
             clearParentExpression: function() {
                 this.parentExpression = null;
             },
-            // 提供给具体实现类附加其绘制的관리符图形的接口
+            // 提供给具体实现종류附加其绘制的관리符图形的接口
             addOperatorShape: function(shpae) {
                 return this.operatorShape.addShape(shpae);
             },
@@ -5620,7 +5620,7 @@ _p[45] = {
 };
 
 /*!
- * 所有符번호的基类
+ * 所有符번호的基종류
  * @abstract
  */
 _p[46] = {

@@ -2939,31 +2939,31 @@ module.exports = {
       ],
       "categories":[
         {
-          "name":"类目0"
+          "name":"종류目0"
         },
         {
-          "name":"类目1"
+          "name":"종류目1"
         },
         {
-          "name":"类目2"
+          "name":"종류目2"
         },
         {
-          "name":"类目3"
+          "name":"종류目3"
         },
         {
-          "name":"类目4"
+          "name":"종류目4"
         },
         {
-          "name":"类目5"
+          "name":"종류目5"
         },
         {
-          "name":"类目6"
+          "name":"종류目6"
         },
         {
-          "name":"类目7"
+          "name":"종류目7"
         },
         {
-          "name":"类目8"
+          "name":"종류目8"
         }
       ],
       "roam":true,

@@ -104,7 +104,7 @@ baidu.each = baidu.array.forEach = baidu.array.each = function (source, iterator
 };
 
 /**
- * 对语言层面的封装，包括类형태判断、模块扩展、继承基类以及对象自定义事件的支持。
+ * 对语言层面的封装，包括종류형태判断、模块扩展、继承基종류以及对象自定义事件的支持。
  * @namespace baidu.lang
  */
 baidu.lang = baidu.lang || {};
@@ -119,14 +119,14 @@ baidu.lang = baidu.lang || {};
  * @version 1.2
  * @see baidu.lang.isString,baidu.lang.isObject,baidu.lang.isNumber,baidu.lang.isArray,baidu.lang.isElement,baidu.lang.isBoolean,baidu.lang.isDate
  * @meta standard
- * @returns {boolean} 类형태判断结果
+ * @returns {boolean} 종류형태判断结果
  */
 baidu.lang.isFunction = function (source) {
     return '[object Function]' == Object.prototype.toString.call(source);
 };
 
 /**
- * 判断目标参数是否string类형태或String对象
+ * 判断目标参数是否string종류형태或String对象
  * @name baidu.lang.isString
  * @function
  * @grammar baidu.lang.isString(source)
@@ -135,7 +135,7 @@ baidu.lang.isFunction = function (source) {
  * @meta standard
  * @see baidu.lang.isObject,baidu.lang.isNumber,baidu.lang.isArray,baidu.lang.isElement,baidu.lang.isBoolean,baidu.lang.isDate
  *             
- * @returns {boolean} 类형태判断结果
+ * @returns {boolean} 종류형태判断结果
  */
 baidu.lang.isString = function (source) {
     return '[object String]' == Object.prototype.toString.call(source);
@@ -144,7 +144,7 @@ baidu.isString = baidu.lang.isString;
 
 
 /**
- * 判断浏览器类형태和特性的属性
+ * 判断浏览器종류형태和特性的属性
  * @namespace baidu.browser
  */
 baidu.browser = baidu.browser || {};
@@ -306,7 +306,7 @@ baidu.encodeHTML = baidu.string.encodeHTML;
  * @param {boolean} options.seamlesstabbing 	允许设置执行无缝跳格，从而使회원能跳出flash应用程序。该参数只能在安装Flash7及更高版本的Windows中使用。允许值：true/false
  * @param {boolean} options.devicefont 			设置静态文本对象是否以设备字体呈现。允许值：true/false
  * @param {boolean} options.swliveconnect 		第一次加载flash时浏览器是否应启动Java。允许值：true/false
- * @param {Object} 	options.vars 				要传递给flash的参数，支持JSON或string类형태。
+ * @param {Object} 	options.vars 				要传递给flash的参数，支持JSON或string종류형태。
  * 
  * @see baidu.swf.create
  * @meta standard
@@ -449,7 +449,7 @@ baidu.swf.createHTML = function (options) {
  * @param {boolean} options.seamlesstabbing 	允许设置执行无缝跳格，从而使회원能跳出flash应用程序。该参数只能在安装Flash7及更高版本的Windows中使用。允许值：true/false
  * @param {boolean} options.devicefont 			设置静态文本对象是否以设备字体呈现。允许值：true/false
  * @param {boolean} options.swliveconnect 		第一次加载flash时浏览器是否应启动Java。允许值：true/false
- * @param {Object} 	options.vars 				要传递给flash的参数，支持JSON或string类형태。
+ * @param {Object} 	options.vars 				要传递给flash的参数，支持JSON或string종류형태。
  * 
  * @param {HTMLElement|string} [container] 		flash对象的父容器元素，不传递该参数时在当前代码位置创建flash对象。
  * @meta standard
@@ -507,7 +507,7 @@ baidu.array.remove = function (source, match) {
  * @meta standard
  * @see baidu.lang.isString,baidu.lang.isObject,baidu.lang.isNumber,baidu.lang.isElement,baidu.lang.isBoolean,baidu.lang.isDate
  *             
- * @returns {boolean} 类형태判断结果
+ * @returns {boolean} 종류형태判断结果
  */
 baidu.lang.isArray = function (source) {
     return '[object Array]' == Object.prototype.toString.call(source);
@@ -970,7 +970,7 @@ baidu.flash.fileUploader = baidu.flash.fileUploader || function(options){
     };
 
     /**
-     * 추가文件类형태，支持macType
+     * 추가文件종류형태，支持macType
      * @public
      * @param {Object|Array[Object]} type {description:String, extention:String}
      * @return {Null};
@@ -984,7 +984,7 @@ baidu.flash.fileUploader = baidu.flash.fileUploader || function(options){
     };
     
     /**
-     * 设置文件类형태，支持macType
+     * 设置文件종류형태，支持macType
      * @public
      * @param {Object|Array[Object]} type {description:String, extention:String}
      * @return {Null};
@@ -1096,7 +1096,7 @@ baidu.sio._removeScriptTag = function(scr){
  * @config {Integer} [timeOut] 超时时间，超过这个时间将不再响应本请求，并触发onfailure函数
  * @config {Function} [onfailure] timeOut设定后才生效，到达超时时间时触发本函数
  * @remark
- * 1、与callByServer不同，callback参数只支持Function类형태，不支持string。
+ * 1、与callByServer不同，callback参数只支持Function종류형태，不支持string。
  * 2、如果请求了一个不存在的页面，callback函数在IE/opera下也会被调用，因此使用者需要在onsuccess函数中判断数据是否正确加载。
  * @meta standard
  * @see baidu.sio.callByServer
@@ -1280,7 +1280,7 @@ baidu.json = baidu.json || {};
  * @returns {JSON} 해설结果json对象
  */
 baidu.json.parse = function (data) {
-    //2010/12/09：更新至不使用原生parse，不检测회원输入是否正确
+    //2010/12/09：수정至不使用原生parse，不检测회원输入是否正确
     return (new Function("return (" + data + ")"))();
 };
 /*

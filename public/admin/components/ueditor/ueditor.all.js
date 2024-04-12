@@ -332,9 +332,9 @@ var utils = UE.utils = {
      */
 
     /**
-     * 用给定的迭代器遍历数组或类数组对象
+     * 用给定的迭代器遍历数组或종류数组对象
      * @method each
-     * @param { Array } array 需要遍历的数组或者类数组
+     * @param { Array } array 需要遍历的数组或者종류数组
      * @param { Function } iterator 迭代器， 该方法接受两个参数， 第一个参数是当前所处理的value， 第二个参数是当前遍历对象的key
      * @example
      * ```javascript
@@ -481,10 +481,10 @@ var utils = UE.utils = {
     /**
      * 模拟继承机制， 使得subClass继承自superClass
      * @method inherits
-     * @param { Object } subClass 子类对象
-     * @param { Object } superClass 超类对象
-     * @warning 该方法只能让subClass继承超类的原형태， subClass对象自身的属性和方法不会被继承
-     * @return { Object } 继承superClass后的子类对象
+     * @param { Object } subClass 子종류对象
+     * @param { Object } superClass 超종류对象
+     * @warning 该方法只能让subClass继承超종류的原형태， subClass对象自身的属性和方法不会被继承
+     * @return { Object } 继承superClass后的子종류对象
      * @example
      * ```javascript
      * function SuperClass(){
@@ -1509,7 +1509,7 @@ utils.each(['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Date']
 
 // core/EventBase.js
 /**
- * UE采用的事件基类
+ * UE采用的事件基종류
  * @file
  * @module UE
  * @class EventBase
@@ -1523,15 +1523,15 @@ utils.each(['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Date']
  */
 
 /**
- * UE采用的事件基类，继承此类的对应类将获取addListener,removeListener,fireEvent方法。
- * 在UE中，Editor以及所有ui实例都继承了该类，故可以在对应的ui对象以及editor对象上使用上述方法。
+ * UE采用的事件基종류，继承此종류的对应종류将获取addListener,removeListener,fireEvent方法。
+ * 在UE中，Editor以及所有ui实例都继承了该종류，故可以在对应的ui对象以及editor对象上使用上述方法。
  * @unfile
  * @module UE
  * @class EventBase
  */
 
 /**
- * 通过此构造器，子类可以继承EventBase获取事件监听的方法
+ * 通过此构造器，子종류可以继承EventBase获取事件监听的方法
  * @constructor
  * @example
  * ```javascript
@@ -1657,15 +1657,15 @@ EventBase.prototype = {
     }
 };
 /**
- * 获得对象所拥有监听类형태的所有监听器
+ * 获得对象所拥有监听종류형태的所有监听器
  * @unfile
  * @module UE
  * @since 1.2.6.1
  * @method getListener
  * @public
  * @param { Object } obj  검색监听器的对象
- * @param { String } type 事件类형태
- * @param { Boolean } force  为true且当前所有type类형태的侦听器不存在时，创建一个空监听器数组
+ * @param { String } type 事件종류형태
+ * @param { Boolean } force  为true且当前所有type종류형태的侦听器不存在时，创建一个空监听器数组
  * @return { Array } 监听器数组
  */
 function getListener(obj, type, force) {
@@ -1682,7 +1682,7 @@ function getListener(obj, type, force) {
 ///import core/dom/dom.js
 ///import core/utils.js
 /**
- * dtd html语义化的体现类
+ * dtd html语义化的体现종류
  * @constructor
  * @namespace dtd
  */
@@ -2508,7 +2508,7 @@ var domUtils = dom.domUtils = {
             return domUtils.insertAfter(node, next);
         }
         var retval = node.splitText(offset);
-        //ie8下splitText不会跟新childNodes,我们手动触发他的更新
+        //ie8下splitText不会跟新childNodes,我们手动触发他的수정
         if (browser.ie8) {
             var tmpNode = doc.createTextNode('');
             domUtils.insertAfter(retval, tmpNode);
@@ -2560,10 +2560,10 @@ var domUtils = dom.domUtils = {
         return { 'x':x, 'y':y};
     },
     /**
-     * 为元素element绑定原生DOM事件，type为事件类형태，handler为处理函数
+     * 为元素element绑定原生DOM事件，type为事件종류형태，handler为处理函数
      * @method on
      * @param { Node } element 需要绑定事件的节点对象
-     * @param { String } type 绑定的事件类형태
+     * @param { String } type 绑定的事件종류형태
      * @param { Function } handler 事件处理器
      * @example
      * ```javascript
@@ -2574,10 +2574,10 @@ var domUtils = dom.domUtils = {
      */
 
     /**
-     * 为元素element绑定原生DOM事件，type为事件类형태，handler为处理函数
+     * 为元素element绑定原生DOM事件，type为事件종류형태，handler为处理函数
      * @method on
      * @param { Node } element 需要绑定事件的节点对象
-     * @param { Array } type 绑定的事件类형태数组
+     * @param { Array } type 绑定的事件종류형태数组
      * @param { Function } handler 事件处理器
      * @example
      * ```javascript
@@ -2622,7 +2622,7 @@ var domUtils = dom.domUtils = {
      * 解除DOM事件绑定
      * @method un
      * @param { Node } element 需要解除事件绑定的节点对象
-     * @param { String } type 需要接触绑定的事件类형태
+     * @param { String } type 需要接触绑定的事件종류형태
      * @param { Function } handler 对应的事件处理器
      * @example
      * ```javascript
@@ -2636,7 +2636,7 @@ var domUtils = dom.domUtils = {
      * 解除DOM事件绑定
      * @method un
      * @param { Node } element 需要解除事件绑定的节点对象
-     * @param { Array } type 需要接触绑定的事件类형태数组
+     * @param { Array } type 需要接触绑定的事件종류형태数组
      * @param { Function } handler 对应的事件处理器
      * @example
      * ```javascript
@@ -3458,7 +3458,7 @@ var domUtils = dom.domUtils = {
      * @method addClass
      * @param { Node } ele 需要增加className的元素
      * @param { String } classNames 需要추가的className， 多个className之间以空格分割
-     * @remind 相同的类이름不会被重复추가
+     * @remind 相同的종류이름不会被重复추가
      * @example
      * ```html
      * <span id="test" class="cls1 cls2"></span>
@@ -3480,7 +3480,7 @@ var domUtils = dom.domUtils = {
      * @method addClass
      * @param { Node } ele 需要增加className的元素
      * @param { Array } classNames 需要추가的className的数组
-     * @remind 相同的类이름不会被重复추가
+     * @remind 相同的종류이름不会被重复추가
      * @example
      * ```html
      * <span id="test" class="cls1 cls2"></span>
@@ -3507,7 +3507,7 @@ var domUtils = dom.domUtils = {
         elm.className = utils.trim(cls);
     },
     /**
-     * 判断元素element是否包含给定的样式类이름className
+     * 判断元素element是否包含给定的样式종류이름className
      * @method hasClass
      * @param { Node } ele 需要检测的元素
      * @param { String } classNames 需要检测的className， 多个className之间用空格分割
@@ -3529,7 +3529,7 @@ var domUtils = dom.domUtils = {
      */
 
     /**
-     * 判断元素element是否包含给定的样式类이름className
+     * 判断元素element是否包含给定的样式종류이름className
      * @method hasClass
      * @param { Node } ele 需要检测的元素
      * @param { Array } classNames 需要检测的className数组
@@ -4290,7 +4290,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
  */
 
 /**
- * Range实现类，本类是UEditor底层核心类，封装不同浏览器之间的Range관리。
+ * Range实现종류，本종류是UEditor底层核心종류，封装不同浏览器之间的Range관리。
  * @unfile
  * @module UE.dom
  * @class Range
@@ -4303,7 +4303,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         fillData;
 
     /**
-     * 更新range的collapse상태
+     * 수정range的collapse상태
      * @param  {Range}   range    range对象
      */
     function updateCollapse(range) {
@@ -5091,10 +5091,10 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * 获取当前选区所包含的所有节点的公共祖先节点， 可以根据给定的参数 includeSelf 决定获取到
          * 的公共祖先节点是否可以是当前选区的startContainer或endContainer节点， 如果 includeSelf
          * 的取值为true， 则返回的节点可以是自身的容器节点， 否则， 则不能是容器节点； 同时可以根据
-         * ignoreTextNode 参数的取值决定是否忽略类형태为文本节点的祖先节点。
+         * ignoreTextNode 参数的取值决定是否忽略종류형태为文本节点的祖先节点。
          * @method  getCommonAncestor
          * @param { Boolean } includeSelf 是否允许获取到的公共祖先节点是当前range对象的容器节点
-         * @param { Boolean } ignoreTextNode 获取祖先节点的过程中是否忽略类형태为文本节点的祖先节点
+         * @param { Boolean } ignoreTextNode 获取祖先节点的过程中是否忽略종류형태为文本节点的祖先节点
          * @return { Node } 当前range对象内所有节点的公共祖先节点
          * @see UE.dom.Range:getCommonAncestor()
          * @see UE.dom.Range:getCommonAncestor(Boolean)
@@ -5312,8 +5312,8 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @param { Boolean } serialize 控制返回的标记位置是对当前位置的引用还是ID，如果该值为true，则
          *                              返回标记位置的ID， 反之则返回标记位置节点的引用
          * @return { Object } 返回一个书签记录键值对， 其包含的key有： start => 开始标记的ID或者引用，
-         *                          end => 结束标记的ID或引用， id => 当前标记的类형태， 如果为true，则表示
-         *                          返回的记录的类형태为ID， 反之则为引用
+         *                          end => 结束标记的ID或引用， id => 当前标记的종류형태， 如果为true，则表示
+         *                          返回的记录的종류형태为ID， 反之则为引用
          */
         createBookmark:function (serialize, same) {
             var endNode,
@@ -6514,7 +6514,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
 
 // core/Editor.js
 /**
- * 수정器主类，包含수정器提供的大部分公用接口
+ * 수정器主종류，包含수정器提供的大部分公用接口
  * @file
  * @module UE
  * @class Editor
@@ -6528,7 +6528,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
  */
 
 /**
- * UEditor的核心类，为회원提供与수정器交互的接口。
+ * UEditor的核心종류，为회원提供与수정器交互的接口。
  * @unfile
  * @module UE
  * @class Editor
@@ -6756,7 +6756,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         me.loadServerConfig();
 
         if(!utils.isEmptyObject(UE.I18N)){
-            //修改默认的语言类형태
+            //修改默认的语言종류형태
             me.options.lang = checkCurLang(UE.I18N);
             UE.plugin.load(me);
             langReadied(me);
@@ -7217,7 +7217,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 获取수정器的内容。 可以通过参数定义수정器内置的判空规则
          * @method getContent
-         * @param { Function } fn 自定的判空规则， 要求该方法返回一个boolean类형태的值，
+         * @param { Function } fn 自定的判空规则， 要求该方法返回一个boolean종류형태的值，
          *                      代表当前수정器的内容是否空，
          *                      如果返回true， 则该方法将直接返回空字符串；如果返回false，则수정器将返回
          *                      经过内置过滤规则处理后的内容。
@@ -7675,9 +7675,9 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          */
 
         /**
-         * 检查수정区域中是否有内容，若包含参数tags中的节点类형태，直接返回true
+         * 检查수정区域中是否有内容，若包含参数tags中的节点종류형태，直接返回true
          * @method  hasContents
-         * @param { Array } tags 传入数组判断时用到的节点类형태
+         * @param { Array } tags 传入数组判断时用到的节点종류형태
          * @return { Boolean } 若文档中包含tags数组里对应的tag，返回true，否则返回false
          * @example
          * ```javascript
@@ -8603,7 +8603,7 @@ var filterWord = UE.filterWord = function () {
 
 // core/node.js
 /**
- * 수정器模拟的节点类
+ * 수정器模拟的节点종류
  * @file
  * @module UE
  * @class uNode
@@ -8619,7 +8619,7 @@ var filterWord = UE.filterWord = function () {
 (function () {
 
     /**
-     * 수정器模拟的节点类
+     * 수정器模拟的节点종류
      * @unfile
      * @module UE
      * @class uNode
@@ -9184,7 +9184,7 @@ var filterWord = UE.filterWord = function () {
          * 设置当前节点所代表的元素属性，即设置attrs对象下的属性值
          * @method setAttr
          * @param { String } attrName 要设置的属性이름
-         * @param { * } attrVal 要设置的属性值，类형태视设置的属性而定
+         * @param { * } attrVal 要设置的属性值，종류형태视设置的属性而定
          * @return { * } 返回attrs对象下的属性值
          * @example
          * ```javascript
@@ -11089,7 +11089,7 @@ UE.commands['imagefloat'] = {
  * @param { String } cmd 命令字符串
  * @param { Object } opt 属性键值对，这些属性都将被复制到当前插入图片
  * @remind 该命令第二个参数可接受一个图片配置项对象的数组，可以插入多张图片，
- * 此时数组的每一个元素都是一个Object类형태的图片属性集合。
+ * 此时数组的每一个元素都是一个Object종류형태的图片属性集合。
  * @example
  * ```javascript
  * editor.execCommand( 'insertimage', {
@@ -12209,7 +12209,7 @@ UE.plugins['removeformat'] = function(){
                     tmp = node.parentNode;
                     range.setStartBefore(node);
                     //trace:937
-                    //更新结束边界
+                    //수정结束边界
                     if(range.startContainer === range.endContainer){
                         range.endOffset--;
                     }
@@ -14013,7 +14013,7 @@ UE.plugins['pagebreak'] = function () {
      *          以便于저장数据到服务器端后处理分页。
      * @example
      * ```javascript
-     * editor.execCommand( 'pagebreak'); //插入一个hr标签，带有样式类이름pagebreak
+     * editor.execCommand( 'pagebreak'); //插入一个hr标签，带有样式종류이름pagebreak
      * ```
      */
 
@@ -15712,7 +15712,7 @@ UE.plugins['list'] = function () {
 
                                 span = me.document.createElement('span');
                                 range.insertNode(span);
-                                //判断pre是否是空的节点,如果是<p><br/></p>类형태的空节点，干掉p标签防止它占位
+                                //判断pre是否是空的节点,如果是<p><br/></p>종류형태的空节点，干掉p标签防止它占位
                                 if (domUtils.isEmptyBlock(pre)) {
                                     pre.innerHTML = '';
                                 }
@@ -15901,7 +15901,7 @@ UE.plugins['list'] = function () {
      * @command insertorderedlist
      * @method execCommand
      * @param { String } command 命令字符串
-     * @param { String } style 插入的有序목록类형태，值为：decimal,lower-alpha,lower-roman,upper-alpha,upper-roman,cn,cn1,cn2,num,num1,num2
+     * @param { String } style 插入的有序목록종류형태，值为：decimal,lower-alpha,lower-roman,upper-alpha,upper-roman,cn,cn1,cn2,num,num1,num2
      * @example
      * ```javascript
      * editor.execCommand( 'insertorderedlist','decimal');
@@ -15923,7 +15923,7 @@ UE.plugins['list'] = function () {
      * @command insertorderedlist
      * @method queryCommandValue
      * @param { String } cmd 命令字符串
-     * @return { String } 返回当前有序목록的类형태，值为null或decimal,lower-alpha,lower-roman,upper-alpha,upper-roman,cn,cn1,cn2,num,num1,num2
+     * @return { String } 返回当前有序목록的종류형태，值为null或decimal,lower-alpha,lower-roman,upper-alpha,upper-roman,cn,cn1,cn2,num,num1,num2
      * @example
      * ```javascript
      * editor.queryCommandValue( 'insertorderedlist' );
@@ -15935,7 +15935,7 @@ UE.plugins['list'] = function () {
      * @command insertunorderedlist
      * @method execCommand
      * @param { String } command 命令字符串
-     * @param { String } style 插入的无序목록类형태，值为：circle,disc,square,dash,dot
+     * @param { String } style 插入的无序목록종류형태，值为：circle,disc,square,dash,dot
      * @example
      * ```javascript
      * editor.execCommand( 'insertunorderedlist','circle');
@@ -15957,7 +15957,7 @@ UE.plugins['list'] = function () {
      * @command insertunorderedlist
      * @method queryCommandValue
      * @param { String } command 命令字符串
-     * @return { String } 返回当前无序목록的类형태，值为null或circle,disc,square,dash,dot
+     * @return { String } 返回当前无序목록的종류형태，值为null或circle,disc,square,dash,dot
      * @example
      * ```javascript
      * editor.queryCommandValue( 'insertunorderedlist' );
@@ -17671,7 +17671,7 @@ UE.plugins['autofloat'] = function() {
 
     me.addListener('ready', function(){
         if(checkHasUI(me)){
-            //加载了ui组件，但在new时，没有加载ui，导致수정器实例上没有ui类，所以这里做判断
+            //加载了ui组件，但在new时，没有加载ui，导致수정器实例上没有ui종류，所以这里做判断
             if(!me.ui){
                 return;
             }
@@ -17885,7 +17885,7 @@ UE.plugins['video'] = function (){
  * To change this template use File | Settings | File Templates.
  */
 /**
- * UE表格관리类
+ * UE表格관리종류
  * @param table
  * @constructor
  */
@@ -18233,7 +18233,7 @@ UE.plugins['video'] = function (){
             }
         },
         /**
-         * 更新table对应的索引表
+         * 수정table对应的索引表
          */
         update:function (table) {
             this.table = table || this.table;
@@ -18694,7 +18694,7 @@ UE.plugins['video'] = function (){
                     if(!isInsertTitle) replaceTdToTh(colIndex, cell, row);
                 }
             }
-            //框选时插入不触发contentchange，需要手动更新索引。
+            //框选时插入不触发contentchange，需要手动수정索引。
             this.update();
             return row;
         },
@@ -18821,7 +18821,7 @@ UE.plugins['video'] = function (){
                     if(!isInsertTitleCol) replaceTdToTh(rowIndex, cell, tableRow);
                 }
             }
-            //框选时插入不触发contentchange，需要手动更新索引
+            //框选时插入不触发contentchange，需要手动수정索引
             this.update();
             this.updateWidth(backWidth, defaultValue || {tdPadding:10, tdBorder:1});
         },
@@ -20374,11 +20374,11 @@ UE.plugins['table'] = function () {
         });
 
 
-        //内容变化时触发索引更新
-        //todo 可否考虑标记检测，如果不涉及表格的变化就不进行索引重建和更新
+        //内容变化时触发索引수정
+        //todo 可否考虑标记检测，如果不涉及表格的变化就不进行索引重建和수정
         me.addListener("contentchange", function () {
             var me = this;
-            //尽可能排除一些不需要更新的状况
+            //尽可能排除一些不需要수정的状况
             hideDragLine(me);
             if (getUETableBySelected(me))return;
             var rng = me.selection.getRange();
@@ -20974,7 +20974,7 @@ UE.plugins['table'] = function () {
     }
 
     /**
-     * 更新resize-line
+     * 수정resize-line
      */
     function updateResizeLine( cell, uetable ) {
 
@@ -24164,7 +24164,7 @@ UE.plugin.register('charts', function (){
                     config.tip = data.tip || '';
                     //数据对齐方式
                     config.dataFormat = data.tableDataFormat || '';
-                    //图表类형태
+                    //图表종류형태
                     config.chartType = data.chartType || 0;
 
                     for ( var key in config ) {
@@ -26502,7 +26502,7 @@ UE.ui = baidu.editor.ui = {};
         UIBase = baidu.editor.ui.UIBase;
 
     /**
-     * 该参数将新增一个参数： selected， 参数类형태为一个Object， 形如{ 'align': 'center', 'valign': 'top' }， 表示单元格的初始
+     * 该参数将新增一个参数： selected， 参数종류형태为一个Object， 形如{ 'align': 'center', 'valign': 'top' }， 表示单元格的初始
      * 对齐상태为： 竖直居上，水平居中; 其中 align的取值为：'center', 'left', 'right'; valign的取值为: 'top', 'middle', 'bottom'
      * @update 2013/4/2 hancong03@baidu.com
      */

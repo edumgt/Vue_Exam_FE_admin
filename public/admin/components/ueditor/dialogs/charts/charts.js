@@ -7,7 +7,7 @@ var tableData = [],
     editorTable = null,
     chartsConfig = window.typeConfig,
     resizeTimer = null,
-    //初始默认图表类형태
+    //初始默认图表종류형태
     currentChartType = 0;
 
 window.onload = function () {
@@ -20,7 +20,7 @@ window.onload = function () {
         return;
     }
 
-    //初始化图表类형태选择
+    //初始化图表종류형태选择
     initChartsTypeView();
     renderTable( editorTable );
     initEvent();
@@ -125,7 +125,7 @@ function initUserConfig ( config ) {
 function initEvent () {
 
     var cacheValue = null,
-        //图表类형태数
+        //图表종류형태数
         typeViewCount = chartsConfig.length- 1,
         $chartsTypeViewBox = $( '#scrollBed .view-box' );
 
@@ -171,7 +171,7 @@ function initEvent () {
 
     } );
 
-    //图表类형태变化
+    //图表종류형태变化
     $( '#scrollBed' ).delegate( ".view-box", "click", function (e) {
 
         var index = $( this ).attr( "data-chart-type" );
@@ -374,7 +374,7 @@ function getTableDataFormat () {
 }
 
 /*
- * 중지중非饼图类형태的配置项
+ * 중지중非饼图종류형태的配置项
  */
 function disableNotPieConfig() {
 
@@ -383,7 +383,7 @@ function disableNotPieConfig() {
 }
 
 /*
- * 사용중非饼图类형태的配置项
+ * 사용중非饼图종류형태的配置项
  */
 function enableNotPieConfig() {
 
@@ -488,7 +488,7 @@ dialog.onok = function () {
     var form = document.forms[ 'data-form' ],
         info = getUserConfig();
 
-    //추가图表类형태
+    //추가图表종류형태
     info.chartType = currentChartType;
 
     //同步表格数据到수정器

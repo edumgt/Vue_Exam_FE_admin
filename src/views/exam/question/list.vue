@@ -33,10 +33,10 @@
     <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
       <el-table-column prop="id" label="Id" width="90px"/>
       <el-table-column prop="subjectId" label="과목" :formatter="subjectFormatter" width="120px"/>
-      <el-table-column prop="questionType" label="문항형태" :formatter="questionTypeFormatter" width="70px"/>
+      <el-table-column prop="questionType" label="문항형태" :formatter="questionTypeFormatter" width="80px"/>
       <el-table-column prop="shortTitle" label="문제" show-overflow-tooltip/>
       <el-table-column prop="score" label="점수" width="60px"/>
-      <el-table-column prop="difficult" label="난이도" width="60px"/>
+      <el-table-column prop="difficult" label="난이도" width="70px"/>
       <el-table-column prop="createTime" label="생성일자" width="160px"/>
       <el-table-column label="관리" align="center" width="220px">
         <template slot-scope="{row}">

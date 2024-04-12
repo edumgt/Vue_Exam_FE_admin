@@ -15,8 +15,8 @@ const state = {
       paperTypeEnum: [{ 'key': 1, 'value': '固定시험지' }, { 'key': 4, 'value': '时段시험지' }]
     },
     question: {
-      typeEnum: [{ 'key': 1, 'value': '单选문항' }, { 'key': 2, 'value': '다중선택 객관식' }, { 'key': 3, 'value': '참 또는 거짓' }, { 'key': 4, 'value': '빈칸채우기' }, { 'key': 5, 'value': '단답형' }],
-      editUrlEnum: [{ 'key': 1, 'value': '/exam/question/edit/singleChoice', 'name': '单选문항' },
+      typeEnum: [{ 'key': 1, 'value': '단일 선택문항' }, { 'key': 2, 'value': '다중선택 객관식' }, { 'key': 3, 'value': '참 또는 거짓' }, { 'key': 4, 'value': '빈칸채우기' }, { 'key': 5, 'value': '단답형' }],
+      editUrlEnum: [{ 'key': 1, 'value': '/exam/question/edit/singleChoice', 'name': '단일 선택문항' },
         { 'key': 2, 'value': '/exam/question/edit/multipleChoice', 'name': '다중선택 객관식' },
         { 'key': 3, 'value': '/exam/question/edit/trueFalse', 'name': '참 또는 거짓' },
         { 'key': 4, 'value': '/exam/question/edit/gapFilling', 'name': '빈칸채우기' },

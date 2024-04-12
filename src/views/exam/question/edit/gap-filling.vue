@@ -12,9 +12,9 @@
         </el-select>
       </el-form-item>
       <el-form-item label="문제：" required>
-        <el-input v-model="form.title"   @focus="inputClick(form,'title')" />
+        <el-input v-model="form.title"    />
       </el-form-item>
-      <el-form-item label="填空答案：" required>
+      <el-form-item label="填空답안：" required>
         <el-form-item :label="item.prefix" :key="item.prefix"  v-for="item in form.items"  label-width="50px" class="question-item-label">
           <el-input v-model="item.content"   @focus="inputClick(item,'content')"  class="question-item-content-input"  style="width: 80%"/>
           <span class="question-item-span">점수：</span><el-input v-model="item.score"  style="width:60px;" />

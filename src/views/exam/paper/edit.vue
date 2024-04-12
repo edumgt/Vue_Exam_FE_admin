@@ -11,8 +11,8 @@
           <el-option v-for="item in subjects.filter(data => data.level==form.level)" :key="item.id" :value="item.id" :label="item.name+' ( '+item.levelName+' )'"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="시험지类형태：" required>
-        <el-select v-model="form.paperType" placeholder="시험지类형태" >
+      <el-form-item label="시험지종류형태：" required>
+        <el-select v-model="form.paperType" placeholder="시험지종류형태" >
           <el-option v-for="item in paperTypeEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
@@ -40,7 +40,7 @@
           </el-form-item>
         </el-card>
       </el-form-item>
-      <el-form-item label="建议时长：" required>
+      <el-form-item label="기간：" required>
         <el-input v-model="form.suggestTime"  placeholder="分钟"/>
       </el-form-item>
       <el-form-item>

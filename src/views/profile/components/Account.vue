@@ -7,7 +7,7 @@
       <el-input v-model.trim="userInfo.phone" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="submit">更新</el-button>
+      <el-button type="primary" @click="submit">수정</el-button>
     </el-form-item>
   </el-form>
 </template>
