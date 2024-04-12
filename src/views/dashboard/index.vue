@@ -8,7 +8,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              试卷总数
+              시험지합계
             </div>
             <count-to :start-val="0" :end-val="examPaperCount" :duration="2600" class="card-panel-num" v-loading="loading"/>
           </div>
@@ -21,7 +21,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              题目总数
+              문항합계
             </div>
             <count-to :start-val="0" :end-val="questionCount" :duration="3000" class="card-panel-num" v-loading="loading"/>
           </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              答卷总数
+              답안합계
             </div>
             <count-to :start-val="0" :end-val="doExamPaperCount" :duration="3600" class="card-panel-num" v-loading="loading"/>
           </div>
@@ -47,7 +47,7 @@
           </div>
           <div class="card-panel-description">
             <div class="card-panel-text">
-              答题总数
+              제출답안합계
             </div>
             <count-to :start-val="0" :end-val="doQuestionCount" :duration="3200" class="card-panel-num" v-loading="loading"/>
           </div>
@@ -96,8 +96,8 @@ export default {
       _this.questionCount = response.questionCount
       _this.doExamPaperCount = response.doExamPaperCount
       _this.doQuestionCount = response.doQuestionCount
-      _this.echartsExampaper.setOption(this.option('试卷月数量', '{b}日{c}套', response.mothDayText, response.mothDayDoExamPaperValue))
-      _this.echartsQuestion.setOption(this.option('题目月数量', '{b}日{c}题', response.mothDayText, response.mothDayDoExamQuestionValue))
+      _this.echartsExampaper.setOption(this.option('시험지월별건수', '{b}日{c}세트', response.mothDayText, response.mothDayDoExamPaperValue))
+      _this.echartsQuestion.setOption(this.option('문항월별건수', '{b}日{c}문항', response.mothDayText, response.mothDayDoExamQuestionValue))
       this.loading = false
     })
   },

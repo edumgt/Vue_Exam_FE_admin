@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParam" ref="queryForm" :inline="true">
-      <el-form-item label="题目ID：">
+      <el-form-item label="문항ID：">
         <el-input v-model="queryParam.id" clearable></el-input>
       </el-form-item>
       <el-form-item label="등급(학년)：">
@@ -9,27 +9,27 @@
           <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="学科：">
+      <el-form-item label="과목：">
         <el-select v-model="queryParam.subjectId"  clearable>
           <el-option v-for="item in subjects.filter(data => data.level==queryParam.level)" :key="item.id" :value="item.id" :label="item.name+' ( '+item.levelName+' )'"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">查询</el-button>
+        <el-button type="primary" @click="submitForm">검색</el-button>
         <router-link :to="{path:'/exam/paper/edit'}" class="link-left">
-          <el-button type="primary">添加</el-button>
+          <el-button type="primary">추가</el-button>
         </router-link>
       </el-form-item>
     </el-form>
     <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
       <el-table-column prop="id" label="Id" width="90px"/>
-      <el-table-column prop="subjectId" label="学科" :formatter="subjectFormatter" width="120px" />
-      <el-table-column prop="name" label="名称"  />
-      <el-table-column prop="createTime" label="创建时间" width="160px"/>
-      <el-table-column  label="操作" align="center"  width="160px">
+      <el-table-column prop="subjectId" label="과목" :formatter="subjectFormatter" width="120px" />
+      <el-table-column prop="name" label="이름"  />
+      <el-table-column prop="createTime" label="생성일자" width="160px"/>
+      <el-table-column  label="관리" align="center"  width="160px">
         <template slot-scope="{row}">
-          <el-button size="mini" @click="$router.push({path:'/exam/paper/edit',query:{id:row.id}})" >编辑</el-button>
-          <el-button size="mini" type="danger" class="link-left">删除</el-button>
+          <el-button size="mini" @click="$router.push({path:'/exam/paper/edit',query:{id:row.id}})" >수정</el-button>
+          <el-button size="mini" type="danger" class="link-left">삭제</el-button>
         </template>
       </el-table-column>
     </el-table>

@@ -2,7 +2,7 @@
  * Created by zhangbo21 on 14-9-2.
  */
 /*
- * getKfContent : 将image的src从base64替换为文件名
+ * getKfContent : 将image的src从base64替换为文件이름
  * param : callback -- 回调函数 其参数为替换之后的内容
  * return : void
  * */

@@ -1,5 +1,5 @@
 ///import core
-///plugin 编辑器默认的过滤转换机制
+///plugin 수정器默认的过滤转换机制
 
 UE.plugins['defaultfilter'] = function () {
     var me = this;
@@ -9,7 +9,7 @@ UE.plugins['defaultfilter'] = function () {
         'rgb2Hex':true
     });
     //默认的过滤处理
-    //进入编辑器的内容处理
+    //进入수정器的内容处理
     me.addInputRule(function (root) {
         var allowDivTransToP = this.options.allowDivTransToP;
         var val;
@@ -84,7 +84,7 @@ UE.plugins['defaultfilter'] = function () {
 //                            node.setAttr('style', cssStyle)
 //
 //                        }
-                        //p标签不允许嵌套
+                        //p标签不允许嵌세트
                         UE.utils.each(node.children,function(n){
                             if(n.type == 'element' && n.tagName == 'p'){
                                 var next = n.nextSibling();
@@ -172,7 +172,7 @@ UE.plugins['defaultfilter'] = function () {
 
     });
 
-    //从编辑器出去的内容处理
+    //从수정器出去的内容处理
     me.addOutputRule(function (root) {
 
         var val;

@@ -49,39 +49,39 @@ const constantRoutes = [
         path: 'student/list',
         component: () => import('@/views/user/student/list'),
         name: 'UserStudentPageList',
-        meta: { title: '学生列表', noCache: true }
+        meta: { title: '학생목록', noCache: true }
       },
       {
         path: 'student/edit',
         component: () => import('@/views/user/student/edit'),
         name: 'UserStudentEdit',
-        meta: { title: '学生编辑', noCache: true, activeMenu: '/user/student/list' },
+        meta: { title: '학생수정', noCache: true, activeMenu: '/user/student/list' },
         hidden: true
       },
       {
         path: 'teacher/list',
         component: () => import('@/views/user/teacher/list'),
         name: 'UserTeacherPageList',
-        meta: { title: '教师列表', noCache: true }
+        meta: { title: '강사목록', noCache: true }
       },
       {
         path: 'teacher/edit',
         component: () => import('@/views/user/teacher/edit'),
         name: 'UserTeacherEdit',
-        meta: { title: '教师编辑', noCache: true, activeMenu: '/user/teacher/list' },
+        meta: { title: '강사수정', noCache: true, activeMenu: '/user/teacher/list' },
         hidden: true
       },
       {
         path: 'admin/list',
         component: () => import('@/views/user/admin/list'),
         name: 'UserAdminPageList',
-        meta: { title: '管理员列表', noCache: true }
+        meta: { title: '관리자목록', noCache: true }
       },
       {
         path: 'admin/edit',
         component: () => import('@/views/user/admin/edit'),
         name: 'UserAdminEdit',
-        meta: { title: '管理员编辑', noCache: true, activeMenu: '/user/admin/list' },
+        meta: { title: '관리자수정', noCache: true, activeMenu: '/user/admin/list' },
         hidden: true
       }
     ]
@@ -91,7 +91,7 @@ const constantRoutes = [
     component: Layout,
     name: 'ExamPage',
     meta: {
-      title: '卷题管理',
+      title: '시험관리',
       icon: 'exam'
     },
     children: [
@@ -99,54 +99,54 @@ const constantRoutes = [
         path: 'paper/list',
         component: () => import('@/views/exam/paper/list'),
         name: 'ExamPaperPageList',
-        meta: { title: '试卷列表', noCache: true }
+        meta: { title: '시험지목록', noCache: true }
       },
       {
         path: 'paper/edit',
         component: () => import('@/views/exam/paper/edit'),
         name: 'ExamPaperEdit',
-        meta: { title: '试卷编辑', noCache: true, activeMenu: '/exam/paper/list' },
+        meta: { title: '시험지수정', noCache: true, activeMenu: '/exam/paper/list' },
         hidden: true
       },
       {
         path: 'question/list',
         component: () => import('@/views/exam/question/list'),
         name: 'ExamQuestionPageList',
-        meta: { title: '题目列表', noCache: true }
+        meta: { title: '문항목록', noCache: true }
       },
       {
         path: 'question/edit/singleChoice',
         component: () => import('@/views/exam/question/edit/single-choice'),
         name: 'singleChoicePage',
-        meta: { title: '单选题编辑', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '单选문항수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       },
       {
         path: 'question/edit/multipleChoice',
         component: () => import('@/views/exam/question/edit/multiple-choice'),
         name: 'multipleChoicePage',
-        meta: { title: '多选题编辑', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '다중선택 객관식수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       },
       {
         path: 'question/edit/trueFalse',
         component: () => import('@/views/exam/question/edit/true-false'),
         name: 'trueFalsePage',
-        meta: { title: '判断题编辑', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '참 또는 거짓수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       },
       {
         path: 'question/edit/gapFilling',
         component: () => import('@/views/exam/question/edit/gap-filling'),
         name: 'gapFillingPage',
-        meta: { title: '填空题编辑', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '빈칸채우기수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       },
       {
         path: 'question/edit/shortAnswer',
         component: () => import('@/views/exam/question/edit/short-answer'),
         name: 'shortAnswerPage',
-        meta: { title: '简答题编辑', noCache: true, activeMenu: '/exam/question/list' },
+        meta: { title: '단답형수정', noCache: true, activeMenu: '/exam/question/list' },
         hidden: true
       }
     ]
@@ -156,7 +156,7 @@ const constantRoutes = [
     component: Layout,
     name: 'EducationPage',
     meta: {
-      title: '教育管理',
+      title: '과정관리',
       icon: 'education'
     },
     alwaysShow: true,
@@ -165,13 +165,13 @@ const constantRoutes = [
         path: 'subject/list',
         component: () => import('@/views/education/subject/list'),
         name: 'EducationSubjectPage',
-        meta: { title: '学科列表', noCache: true }
+        meta: { title: '과목목록', noCache: true }
       },
       {
         path: 'subject/edit',
         component: () => import('@/views/education/subject/edit'),
         name: 'EducationSubjectEditPage',
-        meta: { title: '学科编辑', noCache: true },
+        meta: { title: '과목수정', noCache: true },
         hidden: true
       }
     ]

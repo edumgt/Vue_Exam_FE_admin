@@ -7,23 +7,23 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">查询</el-button>
+        <el-button type="primary" @click="submitForm">검색</el-button>
         <router-link :to="{path:'/education/subject/edit'}" class="link-left">
-          <el-button type="primary">添加</el-button>
+          <el-button type="primary">추가</el-button>
         </router-link>
       </el-form-item>
     </el-form>
 
     <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
       <el-table-column prop="id" label="Id" />
-      <el-table-column prop="name" label="学科"/>
+      <el-table-column prop="name" label="과목"/>
       <el-table-column prop="levelName" label="등급(학년)" />
-      <el-table-column width="220px" label="操作" align="center">
+      <el-table-column width="220px" label="관리" align="center">
         <template slot-scope="{row}">
           <router-link :to="{path:'/education/subject/edit', query:{id:row.id}}" class="link-left">
-            <el-button size="mini">编辑</el-button>
+            <el-button size="mini">수정</el-button>
           </router-link>
-          <el-button size="mini" type="danger"  class="link-left">删除</el-button>
+          <el-button size="mini" type="danger"  class="link-left">삭제</el-button>
         </template>
       </el-table-column>
     </el-table>

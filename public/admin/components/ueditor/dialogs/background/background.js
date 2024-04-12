@@ -112,7 +112,7 @@
         });
     }
 
-    /* 初始化在线图片列表 */
+    /* 初始化在线图片목록 */
     function initImagePanel() {
         onlineImage = onlineImage || new OnlineImage('imageList');
     }
@@ -246,12 +246,12 @@
             /* 第一次拉取数据 */
             this.getImageData();
         },
-        /* 重置界面 */
+        /* 취소界面 */
         reset: function() {
             this.initContainer();
             this.initData();
         },
-        /* 向后台拉取图片列表数据 */
+        /* 向后台拉取图片목록数据 */
         getImageData: function () {
             var _this = this;
 
@@ -294,7 +294,7 @@
                 });
             }
         },
-        /* 添加图片到列表界面上 */
+        /* 추가图片到목록界面上 */
         pushData: function (list) {
             var i, item, img, icon, _this = this,
                 urlPrefix = editor.getOpt('imageManagerUrlPrefix');

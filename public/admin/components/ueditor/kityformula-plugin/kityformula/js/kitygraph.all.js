@@ -75,10 +75,10 @@ _p[0] = {
          * @grammar new kity.Animator(option)
          *
          * @param  {any}      beginValue|opt.beginValue
-         *     动画的起始值，允许的类型有数字、数组、字面量、kity.Point、kity.Vector、kity.Box、kity.Matrix
+         *     动画的起始值，允许的类형태有数字、数组、字面量、kity.Point、kity.Vector、kity.Box、kity.Matrix
          *
          * @param  {any}      finishValue|opt.beginValue
-         *     动画的结束值，类型应于起始值相同
+         *     动画的结束值，类형태应于起始值相同
          *
          * @param  {Function} setter|opt.setter
          *     值的使用函数，接受三个参数: function(target, value, timeline)
@@ -161,7 +161,7 @@ _p[0] = {
             /**
          * @method create()
          * @for kity.Animator
-         * @description 使用当前的动画器为指定目标创建时间线
+         * @description 使用当前的动画器为指定目标생성일자线
          *
          * @grammar create(target, duration, easing, callback) => {kity.Timeline}
          *
@@ -531,9 +531,9 @@ _p[2] = {
         // 等待执行的帧动作的集合，这些帧的方法将在下个原生动画帧同步执行
         var pendingFrames = [];
         /**
-     * 添加一个帧到等待集合中
+     * 추가一个帧到等待集合中
      *
-     * 如果添加的帧是序列的第一个，至少有一个帧需要被执行，则会请求一个原生动画帧来执行
+     * 如果추가的帧是序列的第一个，至少有一个帧需要被执行，则会请求一个原生动画帧来执行
      */
         function pushFrame(frame) {
             if (pendingFrames.push(frame) === 1) {
@@ -565,7 +565,7 @@ _p[2] = {
      *         动作执行时的时间戳（ms）
      *
      *     frame.index {Number}
-     *         当前执行的帧的编号（首帧为 0）
+     *         当前执行的帧的编번호（首帧为 0）
      *
      *     frame.dur {Number}
      *         上一帧至当前帧经过的时间，单位 ms
@@ -646,7 +646,7 @@ _p[2] = {
             //
             // http://stackoverflow.com/questions/13133434/requestanimationframe-detect-stop
             // 浏览器最小化或切换标签，requestAnimationFrame 不会执行。
-            // 检测时间超过 200 ms（频率小于 5Hz ） 判定为计时器暂停，重置为一帧长度
+            // 检测时间超过 200 ms（频率小于 5Hz ） 判定为计时器暂停，취소为一帧长度
             //
             if (dur > 200) {
                 dur = 1e3 / 60;
@@ -1226,7 +1226,7 @@ _p[8] = {
              * @description 在时间线播放后触发
              *
              * @param {String} event.lastStatus
-             *        表示播放前的上一个状态，可能取值为 'ready'、'finished'、'stoped'、'paused'
+             *        表示播放前的上一个상태，可能取值为 'ready'、'finished'、'stoped'、'paused'
              */
                 this.fire("play", new TimelineEvent(this, "play", {
                     lastStatus: lastStatus
@@ -1338,7 +1338,7 @@ _p[8] = {
             /**
          * @method repeat()
          * @for kity.Timeline
-         * @description 设置时间线的重复选项
+         * @description 设置时间线的重复보기
          *
          * @grammar repeat(repeat, rollback) => {this}
          *
@@ -1539,8 +1539,8 @@ _p[10] = {
             if (browser.opera) version = parseFloat(opera.version());
             // WebKit 522+ (Safari 3+)
             if (browser.webkit) version = parseFloat(agent.match(/ applewebkit\/(\d+)/)[1]);
-            // 搜狗版本号无从得知
-            // 猎豹版本号无从得知
+            // 搜狗版本번호无从得知
+            // 猎豹版本번호无从得知
             // 百度
             if (browser.bd) version = parseFloat(agent.match(/bidubrowser\/(\d+)/)[1]);
             // Opera 9.50+
@@ -1583,8 +1583,8 @@ _p[11] = {
      * @for kity.Class
      * @protected
      * @grammar base(name, args...) => {any}
-     * @description 调用父类指定名称的函数
-     * @param {string} name 函数的名称
+     * @description 调用父类指定이름的函数
+     * @param {string} name 函数的이름
      * @param {parameter} args... 传递给父类函数的参数
      *
      * @example
@@ -1619,8 +1619,8 @@ _p[11] = {
      * @for kity.Class
      * @protected
      * @grammar callBase(args...) => {any}
-     * @description 调用父类同名函数
-     * @param {parameter} args... 传递到父类同名函数的参数
+     * @description 调用父类同이름函数
+     * @param {parameter} args... 传递到父类同이름函数的参数
      *
      * @example
      *
@@ -1683,7 +1683,7 @@ _p[11] = {
      * @for kity.Class
      * @grammar pipe() => {this}
      * @description 以当前对象为上线文以及管道函数的第一个参数，执行一个管道函数
-     * @param  {Function} fn 进行管道操作的函数
+     * @param  {Function} fn 进行管道관리的函数
      *
      * @example
      *
@@ -1704,7 +1704,7 @@ _p[11] = {
      * @method getType()
      * @for kity.Class
      * @grammar getType() => {string}
-     * @description 获得对象的类型
+     * @description 获得对象的类형태
      *
      * @example
      *
@@ -1799,12 +1799,12 @@ _p[11] = {
      * @method kity.createClass()
      * @grammar kity.createClass(classname, defines) => {Class}
      * @description 创建一个类
-     * @param  {string} classname 类名，用于调试的时候查看，可选
+     * @param  {string} classname 类이름，用于调试的时候查看，可选
      * @param  {object} defines   类定义
      *      defines.base {Class}
      *          定义的类的基类，如果不配置，则表示基类为 kity.Class
      *      defines.mixins {Class[]}
-     *          定义的类要融合的类列表
+     *          定义的类要融合的类목록
      *      defines.constructor {Function}
      *          定义类的构造函数，如果父类显式定义了构造函数，需要在构造函数中使用 callBase() 方法调用父类的构造函数
      *      defines.* {Function}
@@ -1893,7 +1893,7 @@ _p[11] = {
             NewClass.__KityBaseClass = constructor.__KityBaseClass = BaseClass;
             NewClass.__KityMethodName = constructor.__KityMethodName = "constructor";
             NewClass.__KityMethodClass = constructor.__KityMethodClass = NewClass;
-            // 下面这些不需要拷贝到原型链上
+            // 下面这些不需要拷贝到原형태链上
             delete defines.mixins;
             delete defines.constructor;
             delete defines.base;
@@ -2114,7 +2114,7 @@ _p[12] = {
          *
          * console.log(target === source); // false
          * console.log(target.key1 === source.key1); // false
-         * console.log(target.key3 === source.key3); // true，因为是值类型
+         * console.log(target.key3 === source.key3); // true，因为是值类형태
          * ```
          */
             copy: function copy(obj) {
@@ -2170,15 +2170,15 @@ _p[12] = {
          * @for kity.Utils
          * @grammar paralle() => {Any}
          *
-         * @description 平行地对 v1 和 v2 进行指定的操作
+         * @description 平行地对 v1 和 v2 进行指定的관리
          *
-         *    如果 v1 是数字，那么直接进行 op 操作
-         *    如果 v1 是对象，那么返回一个对象，其元素是 v1 和 v2 同键值的每个元素平行地进行 op 操作的结果
-         *    如果 v1 是数组，那么返回一个数组，其元素是 v1 和 v2 同索引的每个元素平行地进行 op 操作的结果
+         *    如果 v1 是数字，那么直接进行 op 관리
+         *    如果 v1 是对象，那么返回一个对象，其元素是 v1 和 v2 同键值的每个元素平行地进行 op 관리的结果
+         *    如果 v1 是数组，那么返回一个数组，其元素是 v1 和 v2 同索引的每个元素平行地进行 op 관리的结果
          *
-         * @param  {Number|Object|Array} v1 第一个操作数
-         * @param  {Number|Object|Array} v2 第二个操作数
-         * @param  {Function} op 操作函数
+         * @param  {Number|Object|Array} v1 第一个관리数
+         * @param  {Number|Object|Array} v2 第二个관리数
+         * @param  {Function} op 관리函数
          *
          *
          *
@@ -2243,7 +2243,7 @@ _p[12] = {
                 return value;
             },
             /**
-         * 创建 op 操作的一个平行化版本
+         * 创建 op 관리的一个平行化版本
          */
             parallelize: function parallelize(op) {
                 return function(v1, v2) {
@@ -2255,49 +2255,49 @@ _p[12] = {
      * @method isString()
      * @for kity.Utils
      * @grammar isString(unknown) => {boolean}
-     * @description 判断一个值是否为字符串类型
+     * @description 判断一个值是否为字符串类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isFunction()
      * @for kity.Utils
      * @grammar isFunction(unknown) => {boolean}
-     * @description 判断一个值是否为函数类型
+     * @description 判断一个值是否为函数类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isArray()
      * @for kity.Utils
      * @grammar isArray(unknown) => {boolean}
-     * @description 判断一个值是否为数组类型
+     * @description 判断一个值是否为数组类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isNumber()
      * @for kity.Utils
      * @grammar isNumber(unknown) => {boolean}
-     * @description 判断一个值是否为数字类型
+     * @description 判断一个值是否为数字类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isRegExp()
      * @for kity.Utils
      * @grammar isRegExp(unknown) => {boolean}
-     * @description 判断一个值是否为正则表达式类型
+     * @description 判断一个值是否为正则表达式类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isObject()
      * @for kity.Utils
      * @grammar isObject(unknown) => {boolean}
-     * @description 判断一个值是否为对象类型
+     * @description 判断一个值是否为对象类형태
      * @param  {any} unknown 要判断的值
      */
         /**
      * @method isBoolean()
      * @for kity.Utils
      * @grammar isBoolean(unknown) => {boolean}
-     * @description 判断一个值是否为布尔类型
+     * @description 判断一个值是否为布尔类형태
      * @param  {any} unknown 要判断的值
      */
         utils.each([ "String", "Function", "Array", "Number", "RegExp", "Object", "Boolean" ], function(v) {
@@ -2325,7 +2325,7 @@ _p[13] = {
             }
         });
         Utils.extend(ColorMatrixEffect, {
-            // 类型常量
+            // 类형태常量
             TYPE_MATRIX: "matrix",
             TYPE_SATURATE: "saturate",
             TYPE_HUE_ROTATE: "hueRotate",
@@ -2398,7 +2398,7 @@ _p[15] = {
 //src/filter/effect/effect.js
 /*
  * 效果类
- * 该类型的对象不存储任何内部属性， 所有操作都是针对该类对象所维护的节点进行的
+ * 该类형태的对象不存储任何内部属性， 所有관리都是针对该类对象所维护的节点进行的
  */
 _p[16] = {
     value: function(require, exports, module) {
@@ -2429,7 +2429,7 @@ _p[16] = {
             }
         });
         _p.r(12).extend(Effect, {
-            // 特效名称常量
+            // 特效이름常量
             NAME_GAUSSIAN_BLUR: "feGaussianBlur",
             NAME_OFFSET: "feOffset",
             NAME_COMPOSITE: "feComposite",
@@ -2703,7 +2703,7 @@ _p[23] = {
          *
          * @grammar new kity.Bezier(bezierPoints)
          *
-         * @param  {kity.BezierPoints[]} bezierPoints 贝塞尔点集合，每个元素应该是 {kity.BezierPoint} 类型
+         * @param  {kity.BezierPoints[]} bezierPoints 贝塞尔点集合，每个元素应该是 {kity.BezierPoint} 类형태
          *
          * @example
          *
@@ -3320,11 +3320,11 @@ _p[25] = {
      * @method parse()
      * @static
      * @for kity.Box
-     * @description 解析一个字符串或数组为 kity.Box 对象
+     * @description 해설一个字符串或数组为 kity.Box 对象
      *
      * @grammar kity.Box.parse(any) => {kity.Box}
      *
-     * @param  {Number[]|String} any 要解析的字符串或数组
+     * @param  {Number[]|String} any 要해설的字符串或数组
      *
      * @example
      *
@@ -3463,7 +3463,7 @@ _p[27] = {
          * @grammar clipWidth(clip) => {this}
          *
          * @param {kity.Clip|kity.Shape} clip 要用于裁切当前图形的图形；
-         *     如果 clip 本身是一个裁切对象（kity.Clip 类型），则直接裁切；
+         *     如果 clip 本身是一个裁切对象（kity.Clip 类형태），则直接裁切；
          *     否则将创建新的裁切包含给定的图形，然后对当前图形进行裁切
          *
          * @example
@@ -3523,7 +3523,7 @@ _p[28] = {
                 //parse构造
                 if (typeof arguments[0] === "string") {
                     colorValue = ColorUtils.parseToValue(arguments[0]);
-                    //解析失败
+                    //해설失败
                     if (colorValue === null) {
                         colorValue = {
                             r: 0,
@@ -3557,7 +3557,7 @@ _p[28] = {
              *
              * @grammar set(name, value) => {this}
              *
-             * @param {string} name  要设置的颜色通道的名称
+             * @param {string} name  要设置的颜色通道的이름
              *     r: 红色（Red），取值范围 [0, 255]
              *     g: 绿色（Green），取值范围 [0, 255]
              *     b: 蓝色（Blue），取值范围 [0, 255]
@@ -3595,7 +3595,7 @@ _p[28] = {
              *
              * @grammar inc(name, value) => {this}
              *
-             * @param  {string} name  要增加的通道的名称，具体含义请查看 set 方法
+             * @param  {string} name  要增加的通道的이름，具体含义请查看 set 方法
              * @param  {number} value 增量值
              */
             inc: function(name, value) {
@@ -3616,7 +3616,7 @@ _p[28] = {
              *
              * @grammar dec(name, value) => {this}
              *
-             * @param  {string} name  要减少值的通道的名称，具体含义请查看 set 方法
+             * @param  {string} name  要减少值的通道的이름，具体含义请查看 set 方法
              * @param  {number} value 减量值
              */
             dec: function(name, value) {
@@ -3774,7 +3774,7 @@ _p[28] = {
          * @static
          * @for kity.Color
          *
-         * @description 解析一个颜色字符串为 kity.Color 对象
+         * @description 해설一个颜色字符串为 kity.Color 对象
          *
          * @grammar kity.Color.parse(valStr)
          *
@@ -3792,7 +3792,7 @@ _p[28] = {
                 if (Utils.isObject(valStr) && "r" in valStr) {
                     rgbValue = valStr;
                 }
-                //解析失败， 返回一个默认color实例
+                //해설失败， 返回一个默认color实例
                 if (rgbValue === null) {
                     return new Color();
                 }
@@ -4330,13 +4330,13 @@ _p[30] = {
                     if (this.closeState || i != len - 1) {
                         curControlPoint = withControlPoints[i].points[0];
                     } else {
-                        //非闭合状态下最后一个点的处理
+                        //非闭合상태下最后一个点的处理
                         curControlPoint = withControlPoints[i].center;
                     }
                     if (this.closeState || i != 1) {
                         prevControlPoint = withControlPoints[i - 1].points[1];
                     } else {
-                        //非闭合状态下第一个点的处理
+                        //非闭合상태下第一个点的处理
                         prevControlPoint = withControlPoints[i - 1].center;
                     }
                     drawer.bezierTo(prevControlPoint.x, prevControlPoint.y, curControlPoint.x, curControlPoint.y, curPoint.x, curPoint.y);
@@ -4491,7 +4491,7 @@ _p[33] = {
         // 内部处理器缓存
         var INNER_HANDLER_CACHE = {}, // 회원处理器缓存
         USER_HANDLER_CACHE = {}, guid = 0;
-        // 添加事件统一入口
+        // 추가事件统一入口
         function _addEvent(type, handler, isOnce) {
             isOnce = !!isOnce;
             if (Utils.isString(type)) {
@@ -4518,7 +4518,7 @@ _p[33] = {
                     }
                 });
             }
-            //删除所有监听器
+            //삭제所有监听器
             if (isRemoveAll) {
                 deleteDomEvent(this.node, type, INNER_HANDLER_CACHE[eventId][type]);
                 delete USER_HANDLER_CACHE[eventId][type];
@@ -4541,23 +4541,23 @@ _p[33] = {
                         var result;
                         if (fn) {
                             result = fn.call(targetObject, e);
-                            //once 绑定， 执行完后删除
+                            //once 绑定， 执行完后삭제
                             if (isOnce) {
                                 targetObject.off(type, fn);
                             }
                         }
-                        // 如果회원handler里return了false， 则该节点上的此后的同类型事件将不再执行
+                        // 如果회원handler里return了false， 则该节点上的此后的同类형태事件将不再执行
                         return result;
                     }, targetObject);
                 };
             }
-            // 初始化회원监听器列表
+            // 初始化회원监听器목록
             if (!USER_HANDLER_CACHE[eid]) {
                 USER_HANDLER_CACHE[eid] = {};
             }
             if (!USER_HANDLER_CACHE[eid][type]) {
                 USER_HANDLER_CACHE[eid][type] = [ handler ];
-                // 绑定对应类型的事件
+                // 绑定对应类형태的事件
                 // dom对象利用dom event进行处理， 非dom对象， 由消息分发机制处理
                 if (!!node && "on" + type in node) {
                     bindDomEvent(node, type, INNER_HANDLER_CACHE[eid][type]);
@@ -4574,7 +4574,7 @@ _p[33] = {
                 node.attachEvent("on" + type, handler);
             }
         }
-        // 删除dom事件
+        // 삭제dom事件
         function deleteDomEvent(node, type, handler) {
             if (node.removeEventListener) {
                 node.removeEventListener(type, handler, false);
@@ -4726,7 +4726,7 @@ _p[34] = {
         /**
      * kity.g.parsePathString(pathString)
      *
-     * 解析 Path 字符串成 PathSegment
+     * 해설 Path 字符串成 PathSegment
      *
      * @copyright rapheal.js
      *
@@ -5135,7 +5135,7 @@ _p[34] = {
      * @return {Point} p
      *     p.x: x 坐标
      *     p.y: y 坐标
-     *     p.tan: 在 t 处的切线方向（类型为 kity.Vector，模为 1）
+     *     p.tan: 在 t 处的切线方向（类형태为 kity.Vector，模为 1）
      */
         g.pointAtBezier = function(bezierArray, t) {
             var b2t = cutBezier(bezierArray, t)[0];
@@ -5167,7 +5167,7 @@ _p[34] = {
                 }
                 return Math.pow(m, .5);
             }
-            // 用Newton-Cotes型求积公式
+            // 用Newton-Cotes형태求积公式
             var arr = bezierArray;
             // 三次贝塞尔曲线函数求导后，求出对应的方程系数，用cx[],cy[]表示x`(t)和y`(t)的系数
             var cx0, cx1, cx2;
@@ -5337,7 +5337,7 @@ _p[34] = {
      * @return {Point} p
      *     p.x: x 坐标
      *     p.y: y 坐标
-     *     p.tan: 在 t 处的切线方向（类型为 kity.Vector，模为 1）
+     *     p.tan: 在 t 处的切线方向（类형태为 kity.Vector，模为 1）
      */
         g.pointAtPath = function(path, t) {
             if (!path.isCurve) {
@@ -6134,9 +6134,9 @@ _p[44] = {
                 this.color = {};
             },
             /*
-         * 获取颜色名称所对应的颜色值的Color对象
-         * @param name 需要获取的颜色名称
-         * @return 对应颜色名称的color对象， 如果未找到对应的名称， 则返回null
+         * 获取颜色이름所对应的颜色值的Color对象
+         * @param name 需要获取的颜色이름
+         * @return 对应颜色이름的color对象， 如果未找到对应的이름， 则返回null
          */
             get: function(name) {
                 var colorValue = this.color[name] || StandardColor.EXTEND_STANDARD[name] || StandardColor.COLOR_STANDARD[name] || "";
@@ -6146,18 +6146,18 @@ _p[44] = {
                 return null;
             },
             /*
-         * 获取给定名称的颜色的hex值表示
-         * @param name 需要获取的颜色名称
-         * @return 如果找到对应的名称， 则返回该名称所对应的hex格式的值， 否则， 返回一个空字符串
+         * 获取给定이름的颜色的hex值表示
+         * @param name 需要获取的颜色이름
+         * @return 如果找到对应的이름， 则返回该이름所对应的hex格式的值， 否则， 返回一个空字符串
          */
             getColorValue: function(name) {
                 return this.color[name] || StandardColor.EXTEND_STANDARD[name] || StandardColor.COLOR_STANDARD[name] || "";
             },
             /*
-         * 向调色板实例添加自己独有的颜色名称，对已存在的颜色名称， 将会覆盖掉
-         * @param name 新添加的颜色名称
-         * @param value 新添加的颜色名称所对应的值， 可以是一个合法的颜色字符串或者是一个color对象
-         * @return 新添加的颜色的值
+         * 向调色板实例추가自己独有的颜色이름，对已存在的颜色이름， 将会覆盖掉
+         * @param name 新추가的颜色이름
+         * @param value 新추가的颜色이름所对应的值， 可以是一个合法的颜色字符串或者是一个color对象
+         * @return 新추가的颜色的值
          */
             add: function(name, value) {
                 if (typeof value === "string") {
@@ -6168,9 +6168,9 @@ _p[44] = {
                 return value;
             },
             /*
-         * 删除调色板实例上회원自己添加的颜色， 该方法不能删除内置的颜色
-         * @param name 需要删除的颜色名称
-         * @return 删除是否成功的bool值
+         * 삭제调色板实例上회원自己추가的颜色， 该方法不能삭제内置的颜色
+         * @param name 需要삭제的颜色이름
+         * @return 삭제是否成功的bool值
          */
             remove: function(name) {
                 if (this.color.hasOwnProperty(name)) {
@@ -6189,19 +6189,19 @@ _p[44] = {
                 return null;
             },
             /*
-         * 通过给定的名字获取标准的颜色值表示， 返回的值以hex的方式提供
-         * @param name 需要获取的标准颜色名称
-         * @return 名字所对应的颜色值的hex表示， 如果未找到对应名称的值， 则返回一个空字符串
+         * 通过给定的이름字获取标准的颜色值表示， 返回的值以hex的方式提供
+         * @param name 需要获取的标准颜色이름
+         * @return 이름字所对应的颜色值的hex表示， 如果未找到对应이름的值， 则返回一个空字符串
          */
             getColorValue: function(name) {
                 return StandardColor.EXTEND_STANDARD[name] || StandardColor.COLOR_STANDARD[name] || "";
             },
             /*
-         * 向调色板添加颜色名称，新添加的颜色对所有的调色板对象都可见
-         * 对已存在的颜色名称， 将会覆盖掉
-         * @param name 新添加的颜色名称
-         * @param value 新添加的颜色名称所对于的值， 应该是一个hex格式的颜色字符串， 如： ”#ff0000“
-         * @return 新添加的颜色的值
+         * 向调色板추가颜色이름，新추가的颜色对所有的调色板对象都可见
+         * 对已存在的颜色이름， 将会覆盖掉
+         * @param name 新추가的颜色이름
+         * @param value 新추가的颜色이름所对于的值， 应该是一个hex格式的颜色字符串， 如： ”#ff0000“
+         * @return 新추가的颜色的值
          */
             addColor: function(name, value) {
                 if (typeof value === "string") {
@@ -6212,9 +6212,9 @@ _p[44] = {
                 return value;
             },
             /*
-         * 删除회원自己添加的颜色， 该方法不能删除内置的颜色， 该方法不会影响调色板实例自由的颜色
-         * @param name 需要删除的颜色名称
-         * @return 删除是否成功的bool值
+         * 삭제회원自己추가的颜色， 该方法不能삭제内置的颜色， 该方法不会影响调色板实例自由的颜色
+         * @param name 需要삭제的颜色이름
+         * @return 삭제是否成功的bool值
          */
             removeColor: function(name) {
                 if (StandardColor.EXTEND_STANDARD.hasOwnProperty(name)) {

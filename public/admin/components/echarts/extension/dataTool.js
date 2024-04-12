@@ -28,7 +28,7 @@
  * @module zrender/core/util
  */
 
-// 用于处理merge时无法遍历Date等对象的问题
+// 用于处理merge时无法遍历Date等对象的问문항
 var arrayProto = Array.prototype;
 var nativeMap = arrayProto.map;
 
@@ -86,7 +86,7 @@ var nativeMap = arrayProto.map;
 
 
 /**
- * 查询数组中元素的index
+ * 검색数组中元素的index
  * @memberOf module:zrender/core/util
  */
 

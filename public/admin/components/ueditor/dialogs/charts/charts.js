@@ -3,11 +3,11 @@
  **/
 
 var tableData = [],
-    //编辑器页面table
+    //수정器页面table
     editorTable = null,
     chartsConfig = window.typeConfig,
     resizeTimer = null,
-    //初始默认图表类型
+    //初始默认图表类형태
     currentChartType = 0;
 
 window.onload = function () {
@@ -20,7 +20,7 @@ window.onload = function () {
         return;
     }
 
-    //初始化图表类型选择
+    //初始化图表类형태选择
     initChartsTypeView();
     renderTable( editorTable );
     initEvent();
@@ -125,7 +125,7 @@ function initUserConfig ( config ) {
 function initEvent () {
 
     var cacheValue = null,
-        //图表类型数
+        //图表类형태数
         typeViewCount = chartsConfig.length- 1,
         $chartsTypeViewBox = $( '#scrollBed .view-box' );
 
@@ -171,7 +171,7 @@ function initEvent () {
 
     } );
 
-    //图表类型变化
+    //图表类형태变化
     $( '#scrollBed' ).delegate( ".view-box", "click", function (e) {
 
         var index = $( this ).attr( "data-chart-type" );
@@ -180,12 +180,12 @@ function initEvent () {
 
         currentChartType = index | 0;
 
-        //饼图， 禁用部分配置
+        //饼图， 중지중部分配置
         if ( currentChartType === chartsConfig.length - 1 ) {
 
             disableNotPieConfig();
 
-        //启用完整配置
+        //사용중完整配置
         } else {
 
             enableNotPieConfig();
@@ -374,7 +374,7 @@ function getTableDataFormat () {
 }
 
 /*
- * 禁用非饼图类型的配置项
+ * 중지중非饼图类형태的配置项
  */
 function disableNotPieConfig() {
 
@@ -383,7 +383,7 @@ function disableNotPieConfig() {
 }
 
 /*
- * 启用非饼图类型的配置项
+ * 사용중非饼图类형태的配置项
  */
 function enableNotPieConfig() {
 
@@ -488,10 +488,10 @@ dialog.onok = function () {
     var form = document.forms[ 'data-form' ],
         info = getUserConfig();
 
-    //添加图表类型
+    //추가图表类형태
     info.chartType = currentChartType;
 
-    //同步表格数据到编辑器
+    //同步表格数据到수정器
     syncTableData();
 
     //执行图表命令
@@ -500,7 +500,7 @@ dialog.onok = function () {
 };
 
 /*
- * 同步图表编辑视图的表格数据到编辑器里的原始表格
+ * 同步图表수정视图的表格数据到수정器里的原始表格
  */
 function syncTableData () {
 

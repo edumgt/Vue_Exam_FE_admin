@@ -12,12 +12,12 @@
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/profile/index">
-            <el-dropdown-item>个人信息</el-dropdown-item>
+            <el-dropdown-item>나의정보</el-dropdown-item>
           </router-link>
           <router-link to="/">
             <el-dropdown-item>DashBoard</el-dropdown-item>
           </router-link>
-          <el-dropdown-item  @click.native="logout"  divided>退出</el-dropdown-item>
+          <el-dropdown-item  @click.native="logout"  divided>로그아웃</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>

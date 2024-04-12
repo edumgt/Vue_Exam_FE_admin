@@ -1,38 +1,38 @@
 <template>
   <div class="app-container">
 
-    <el-form :model="form" ref="form" label-width="100px" v-loading="formLoading">
-      <el-form-item label="회원名：" required>
+    <el-form :model="form" ref="form" label-width="150px" v-loading="formLoading">
+      <el-form-item label="아이디：" required>
         <el-input v-model="form.userName"></el-input>
       </el-form-item>
-      <el-form-item label="密码：" required>
+      <el-form-item label="비번：" required>
         <el-input v-model="form.password"></el-input>
       </el-form-item>
-      <el-form-item label="真实姓名：" required>
+      <el-form-item label="이름：" required>
         <el-input v-model="form.realName"></el-input>
       </el-form-item>
-      <el-form-item label="年龄：">
+      <el-form-item label="나이：">
         <el-input v-model="form.age"></el-input>
       </el-form-item>
-      <el-form-item label="性别：">
-        <el-select v-model="form.sex" placeholder="性别" clearable>
+      <el-form-item label="성별：">
+        <el-select v-model="form.sex" placeholder="성별" clearable>
           <el-option v-for="item in sexEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="出生日期：">
+      <el-form-item label="생년월일：">
         <el-date-picker v-model="form.birthDay" type="date" placeholder="选择日期"/>
       </el-form-item>
-      <el-form-item label="手机：">
+      <el-form-item label="휴대폰：">
         <el-input v-model="form.phone"></el-input>
       </el-form-item>
-      <el-form-item label="状态：" required>
-        <el-select v-model="form.status" placeholder="状态" clearable>
+      <el-form-item label="상태：" required>
+        <el-select v-model="form.status" placeholder="상태" clearable>
           <el-option v-for="item in statusEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">提交</el-button>
-        <el-button @click="resetForm">重置</el-button>
+        <el-button type="primary" @click="submitForm">저장</el-button>
+        <el-button @click="resetForm">취소</el-button>
       </el-form-item>
     </el-form>
   </div>

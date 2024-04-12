@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具"/>
-    <meta name="description" content="百度地图API自定义地图，帮助회원在可视化操作下生成百度地图"/>
+    <meta name="description" content="百度地图API自定义地图，帮助회원在可视化관리下生成百度地图"/>
     <title>百度地图API自定义地图</title>
     <!--引用百度地图API-->
     <style type="text/css">
@@ -45,16 +45,16 @@
 
         createMap();//创建地图
         setMapEvent();//设置地图事件
-        addMapControl();//向地图添加控件
+        addMapControl();//向地图추가控件
 
         // 创建标注
         var markersArr = markersParam.split(',');
         var point = new BMap.Point(markersArr[0], markersArr[1]);
         marker = new BMap.Marker(point);
         marker.enableDragging();
-        map.addOverlay(marker); // 将标注添加到地图中
+        map.addOverlay(marker); // 将标注추가到地图中
 
-        if(parent.editor && parent.document.body.contentEditable=="true") { //在编辑状态下
+        if(parent.editor && parent.document.body.contentEditable=="true") { //在수정상태下
             setMapListener();//地图改变修改外层的iframe标签src属性
         }
     }
@@ -69,21 +69,21 @@
 
     //地图事件设置函数：
     function setMapEvent() {
-        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
-        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
-        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
-        map.enableKeyboard();//启用键盘上下左右键移动地图
+        map.enableDragging();//사용중地图拖拽事件，默认사용중(可不写)
+        map.enableScrollWheelZoom();//사용중地图滚轮放大缩小
+        map.enableDoubleClickZoom();//사용중鼠标双击放大，默认사용중(可不写)
+        map.enableKeyboard();//사용중键盘上下左右键移动地图
     }
 
-    //地图控件添加函数：
+    //地图控件추가函数：
     function addMapControl() {
-        //向地图中添加缩放控件
+        //向地图中추가缩放控件
         var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
         map.addControl(ctrl_nav);
-        //向地图中添加缩略图控件
+        //向地图中추가缩略图控件
         var ctrl_ove = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 1});
         map.addControl(ctrl_ove);
-        //向地图中添加比例尺控件
+        //向地图中추가比例尺控件
         var ctrl_sca = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
         map.addControl(ctrl_sca);
     }

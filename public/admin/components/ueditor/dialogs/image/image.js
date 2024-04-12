@@ -310,7 +310,7 @@
                 $wrap = _this.$wrap,
             // 图片容器
                 $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
+            // 상태栏，包括进度和控制按钮
                 $statusBar = $wrap.find('.statusBar'),
             // 文件总体选择信息。
                 $info = $statusBar.find('.info'),
@@ -324,9 +324,9 @@
                 $placeHolder = $wrap.find('.placeholder'),
             // 总体进度条
                 $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
+            // 추가的文件数量
                 fileCount = 0,
-            // 添加的文件总大小
+            // 추가的文件总大小
                 fileSize = 0,
             // 优化retina, 在retina下这个值是2
                 ratio = window.devicePixelRatio || 1,
@@ -382,7 +382,7 @@
                     height: imageCompressBorder,
                     // 图片质量，只有type为`image/jpeg`的时候才有效。
                     quality: 90,
-                    // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
+                    // 是否允许放大，如果想要生成小图的时候不失真，此보기应该设置为false.
                     allowMagnify: false,
                     // 是否允许裁剪。
                     crop: false,
@@ -400,7 +400,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            // 当有文件추가进来时执行，负责view的创建
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -689,7 +689,7 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
+                        /* 추가额外的GET参数 */
                         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
                             url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
                         uploader.option('server', url);
@@ -702,7 +702,7 @@
             });
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+                //这里可以通过data对象추가POST参数
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 
@@ -847,12 +847,12 @@
             /* 第一次拉取数据 */
             this.getImageData();
         },
-        /* 重置界面 */
+        /* 취소界面 */
         reset: function() {
             this.initContainer();
             this.initData();
         },
-        /* 向后台拉取图片列表数据 */
+        /* 向后台拉取图片목록数据 */
         getImageData: function () {
             var _this = this;
 
@@ -895,7 +895,7 @@
                 });
             }
         },
-        /* 添加图片到列表界面上 */
+        /* 추가图片到목록界面上 */
         pushData: function (list) {
             var i, item, img, icon, _this = this,
                 urlPrefix = editor.getOpt('imageManagerUrlPrefix');
@@ -1084,7 +1084,7 @@
                 }
             });
         },
-        /* 添加图片到列表界面上 */
+        /* 추가图片到목록界面上 */
         setList: function (list) {
             var i, item, p, img, link, _this = this,
                 listUl = $G('searchListUl');

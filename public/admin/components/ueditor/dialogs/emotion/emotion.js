@@ -115,9 +115,9 @@ function autoHeight( index ) {
 
 
 function createTab( tabName ) {
-    var faceVersion = "?v=1.1", //版本号
+    var faceVersion = "?v=1.1", //版本번호
             tab = $G( tabName ), //获取将要生成的Div句柄
-            imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //获取显示表情和预览表情的路径
+            imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //获取显示表情和미리보기表情的路径
             positionLine = 11 / 2, //中间数
             iWidth = iHeight = 35, //图片长宽
             iColWidth = 3, //表格剩余空间的显示比例

@@ -237,7 +237,7 @@ function detect(ua) {
  * @module zrender/core/util
  */
 
-// 用于处理merge时无法遍历Date等对象的问题
+// 用于处理merge时无法遍历Date等对象的问문항
 var BUILTIN_OBJECT = {
     '[object Function]': 1,
     '[object RegExp]': 1,
@@ -449,7 +449,7 @@ function getContext() {
 }
 
 /**
- * 查询数组中元素的index
+ * 검색数组中元素的index
  * @memberOf module:zrender/core/util
  */
 function indexOf(array, value) {
@@ -2015,7 +2015,7 @@ Handler.prototype = {
      *
      * @private
      * @param {Object} targetInfo {target, topTarget} 目标图形元素
-     * @param {string} eventName 事件名称
+     * @param {string} eventName 事件이름
      * @param {Object} event 事件对象
      */
     dispatchToElement: function (targetInfo, eventName, event) {
@@ -2173,7 +2173,7 @@ mixin(Handler, Eventful);
 mixin(Handler, Draggable);
 
 /**
- * 3x2矩阵操作类
+ * 3x2矩阵관리类
  * @exports zrender/tool/matrix
  */
 
@@ -3061,8 +3061,8 @@ Clip.prototype = {
                 return 'restart';
             }
 
-            // 动画完成将这个控制器标识为待删除
-            // 在Animation.update中进行批量删除
+            // 动画完成将这个控制器标识为待삭제
+            // 在Animation.update中进行批量삭제
             this._needsRemove = true;
             return 'destroy';
         }
@@ -4172,7 +4172,7 @@ Animator.prototype = {
         return this;
     },
     /**
-     * 添加动画每一帧的回调函数
+     * 추가动画每一帧的回调函数
      * @param  {Function} callback
      * @return {module:zrender/animation/Animator}
      */
@@ -4299,7 +4299,7 @@ Animator.prototype = {
         return this;
     },
     /**
-     * 添加动画结束的回调
+     * 추가动画结束的回调
      * @param  {Function} cb
      * @return {module:zrender/animation/Animator}
      */
@@ -4332,7 +4332,7 @@ if (typeof window !== 'undefined') {
  */
 
 /**
- * debug日志选项：catchBrushException为true下有效
+ * debug日志보기：catchBrushException为true下有效
  * 0 : 不生成debug数据，发布用
  * 1 : 异常抛出，调试用
  * 2 : 控制台输出，调试用
@@ -4668,21 +4668,21 @@ var Element = function (opts) { // jshint ignore:line
 Element.prototype = {
 
     /**
-     * 元素类型
+     * 元素类형태
      * Element type
      * @type {string}
      */
     type: 'element',
 
     /**
-     * 元素名字
+     * 元素이름字
      * Element name
      * @type {string}
      */
     name: '',
 
     /**
-     * ZRender 实例对象，会在 element 添加到 zrender 实例中后自动赋值
+     * ZRender 实例对象，会在 element 추가到 zrender 实例中后自动赋值
      * ZRender instance will be assigned when element is associated with zrender
      * @name module:/zrender/Element#__zr
      * @type {module:zrender/ZRender}
@@ -4862,7 +4862,7 @@ Element.prototype = {
      */
     addSelfToZr: function (zr) {
         this.__zr = zr;
-        // 添加动画
+        // 추가动画
         var animators = this.animators;
         if (animators) {
             for (var i = 0; i < animators.length; i++) {
@@ -5173,7 +5173,7 @@ Group.prototype = {
     },
 
     /**
-     * 获取指定名字的儿子节点
+     * 获取指定이름字的儿子节点
      * @param  {string} name
      * @return {module:zrender/Element}
      */
@@ -5194,7 +5194,7 @@ Group.prototype = {
     },
 
     /**
-     * 添加子节点到最后
+     * 추가子节点到最后
      * @param {module:zrender/Element} child
      */
     add: function (child) {
@@ -5209,7 +5209,7 @@ Group.prototype = {
     },
 
     /**
-     * 添加子节点在 nextSibling 之前
+     * 추가子节点在 nextSibling 之前
      * @param {module:zrender/Element} child
      * @param {module:zrender/Element} nextSibling
      */
@@ -6212,7 +6212,7 @@ Storage.prototype = {
     },
 
     /**
-     * 添加图形(Shape)或者组(Group)到根节点
+     * 추가图形(Shape)或者组(Group)到根节点
      * @param {module:zrender/Element} el
      */
     addRoot: function (el) {
@@ -6229,7 +6229,7 @@ Storage.prototype = {
     },
 
     /**
-     * 删除指定的图形(Shape)或者组(Group)
+     * 삭제指定的图形(Shape)或者组(Group)
      * @param {string|Array.<string>} [el] 如果为空清空整个Storage
      */
     delRoot: function (el) {
@@ -9732,7 +9732,7 @@ Painter.prototype = {
     },
 
     /**
-     * 删除指定层
+     * 삭제指定层
      * @param {number} zlevel 层所在的zlevel
      */
     delLayer: function (zlevel) {
@@ -10035,14 +10035,14 @@ Animation.prototype = {
 
     constructor: Animation,
     /**
-     * 添加 clip
+     * 추가 clip
      * @param {module:zrender/animation/Clip} clip
      */
     addClip: function (clip) {
         this._clips.push(clip);
     },
     /**
-     * 添加 animator
+     * 추가 animator
      * @param {module:zrender/animation/Animator} animator
      */
     addAnimator: function (animator) {
@@ -10053,7 +10053,7 @@ Animation.prototype = {
         }
     },
     /**
-     * 删除动画片段
+     * 삭제动画片段
      * @param {module:zrender/animation/Clip} clip
      */
     removeClip: function (clip) {
@@ -10064,7 +10064,7 @@ Animation.prototype = {
     },
 
     /**
-     * 删除动画片段
+     * 삭제动画片段
      * @param {module:zrender/animation/Animator} animator
      */
     removeAnimator: function (animator) {
@@ -10677,7 +10677,7 @@ var ZRender = function (id, dom, opts) {
      */
     this._needsRefresh;
 
-    // 修改 storage.delFromStorage, 每次删除元素之前删除动画
+    // 修改 storage.delFromStorage, 每次삭제元素之前삭제动画
     // FIXME 有点ugly
     var oldDelFromStorage = storage.delFromStorage;
     var oldAddToStorage = storage.addToStorage;
@@ -10707,7 +10707,7 @@ ZRender.prototype = {
     },
 
     /**
-     * 添加元素
+     * 추가元素
      * @param  {module:zrender/Element} el
      */
     add: function (el) {
@@ -10716,7 +10716,7 @@ ZRender.prototype = {
     },
 
     /**
-     * 删除元素
+     * 삭제元素
      * @param  {module:zrender/Element} el
      */
     remove: function (el) {
@@ -12578,7 +12578,7 @@ function fromArc(
 }
 
 /**
- * Path 代理，可以在`buildPath`中用于替代`ctx`, 会保存每个path操作的命令到pathCommands属性中
+ * Path 代理，可以在`buildPath`中用于替代`ctx`, 会保存每个path관리的命令到pathCommands属性中
  * 可以用于 isInsidePath 判断以及获取boundingRect
  *
  * @module zrender/core/PathProxy
@@ -12921,7 +12921,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * 添加子路径
+     * 추가子路径
      * @param {module:zrender/core/PathProxy|Array.<module:zrender/core/PathProxy>} path
      */
     appendPath: function (path) {
@@ -24189,7 +24189,7 @@ var lang = {
             radar: '雷达图',
             tree: '树图',
             treemap: '矩形树图',
-            boxplot: '箱型图',
+            boxplot: '箱형태图',
             candlestick: 'K线图',
             k: 'K线图',
             heatmap: '热力图',
@@ -24201,7 +24201,7 @@ var lang = {
             funnel: '漏斗图',
             gauge: '仪表盘图',
             pictorialBar: '象形柱图',
-            themeRiver: '主题河流图',
+            themeRiver: '主문항河流图',
             sunburst: '旭日图'
         }
     },
@@ -24213,8 +24213,8 @@ var lang = {
         series: {
             single: {
                 prefix: '',
-                withName: '图表类型是{seriesType}，表示{seriesName}。',
-                withoutName: '图表类型是{seriesType}。'
+                withName: '图表类형태是{seriesType}，表示{seriesName}。',
+                withoutName: '图表类형태是{seriesType}。'
             },
             multiple: {
                 prefix: '它由{seriesCount}个图表系列组成。',

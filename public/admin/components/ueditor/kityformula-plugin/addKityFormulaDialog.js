@@ -5,11 +5,11 @@ UE.registerUI('kityformula', function(editor, uiname){
 
         // 指定弹出层路径
         iframeUrl: editor.options.UEDITOR_HOME_URL + 'kityformula-plugin/kityFormulaDialog.html',
-        // 编辑器实例
+        // 수정器实例
         editor: editor,
-        // dialog 名称
+        // dialog 이름
         name: uiname,
-        // dialog 标题
+        // dialog 标문항
         title: '插入公式 ',
 
         // dialog 外围 css
@@ -46,7 +46,7 @@ UE.registerUI('kityformula', function(editor, uiname){
     var kfBtn = new UE.ui.Button({
         name:'插入' + uiname,
         title:'插入公式',
-        //需要添加的额外样式，指定icon图标
+        //需要추가的额外样式，指定icon图标
         cssRules :'background: url("' + iconUrl + '") !important',
         onclick:function () {
             //渲染dialog
@@ -55,7 +55,7 @@ UE.registerUI('kityformula', function(editor, uiname){
         }
     });
 
-    //当点到编辑内容上时，按钮要做的状态反射
+    //当点到수정内容上时，按钮要做的상태反射
     editor.addListener('selectionchange', function () {
         var state = editor.queryCommandState(uiname);
         if (state == -1) {

@@ -429,7 +429,7 @@ UE.parse.register('table', function (utils) {
             }
         });
 
-        //按照标签名查找父节点
+        //按照标签이름查找父节点
         function findParentByTagName(target, tagNames) {
             var i, current = target;
             tagNames = utils.isArray(tagNames) ? tagNames:[tagNames];
@@ -527,7 +527,7 @@ UE.parse.register('table', function (utils) {
         }
         //更新表格
         function updateTable(table) {
-            //给第一行设置firstRow的样式名称,在排序图标的样式上使用到
+            //给第一行设置firstRow的样式이름,在排序图标的样式上使用到
             if(!utils.hasClass(table.rows[0], "firstRow")) {
                 for(var i = 1; i< table.rows.length; i++) {
                     utils.removeClass(table.rows[i], "firstRow");
@@ -544,7 +544,7 @@ UE.parse.register('charts',function( utils ){
         containers = this.root,
         sources = null;
 
-    //不存在指定的根路径， 则直接退出
+    //不存在指定的根路径， 则直接로그아웃
     if ( !resourceRoot ) {
         return;
     }
@@ -610,7 +610,7 @@ UE.parse.register('charts',function( utils ){
 
         }
 
-        //解析元信息
+        //해설元信息
         meta = meta.split( ";" );
         for ( var i = 0, metaData; metaData = meta[ i ]; i++ ) {
 
@@ -724,7 +724,7 @@ UE.parse.register('charts',function( utils ){
     /**
      * 渲染图表
      * @param container 图表容器节点对象
-     * @param typeConfig 图表类型配置
+     * @param typeConfig 图表类형태配置
      * @param config 图表通用配置
      * */
     function renderChart ( container, typeConfig, config ) {
@@ -793,7 +793,7 @@ UE.parse.register('charts',function( utils ){
 
     }
 
-    //根据config解析出正确的类别和图表数据信息
+    //根据config해설出正确的类别和图表数据信息
     function analysisConfig ( config ) {
 
         var series = [],

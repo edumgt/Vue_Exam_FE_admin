@@ -47,7 +47,7 @@
             maxSize = editor.getOpt('imageMaxSize') / 1024,
             extension = editor.getOpt('imageAllowFiles').join(';').replace(/\./g, '*.');
 
-        /* 添加额外的GET参数 */
+        /* 추가额外的GET参数 */
         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
             urlWidthParams = optImageUrl + (optImageUrl.indexOf('?') == -1 ? '?':'&') + params;
 
@@ -56,15 +56,15 @@
             var flashOptions = {
                 container:"flashContainer",                                                    //flash容器id
                 url:urlWidthParams,                                           // 上传处理页面的url地址
-                ext:editor.queryCommandValue('serverParam') || {},                                 //可向服务器提交的自定义参数列表
+                ext:editor.queryCommandValue('serverParam') || {},                                 //可向服务器저장的自定义参数목록
                 fileType:'{"description":"'+lang.fileType+'", "extension":"' + extension + '"}',     //上传文件格式限制
                 flashUrl:'imageUploader.swf',                                                  //上传用的flash组件地址
                 width:600,          //flash的宽度
                 height:272,         //flash的高度
-                gridWidth:120,     // 每一个预览图片所占的宽度
-                gridHeight:120,    // 每一个预览图片所占的高度
-                picWidth:100,      // 单张预览图片的宽度
-                picHeight:100,     // 单张预览图片的高度
+                gridWidth:120,     // 每一个미리보기图片所占的宽度
+                gridHeight:120,    // 每一个미리보기图片所占的高度
+                picWidth:100,      // 单张미리보기图片的宽度
+                picHeight:100,     // 单张미리보기图片的高度
                 uploadDataFieldName: optImageFieldName,    // POST请求中图片数据的key
                 picDescFieldName:'pictitle',      // POST请求中图片描述的key
                 maxSize: maxSize,                         // 文件的最大体积,单位M
@@ -73,14 +73,14 @@
                 compressSide: 0,                 //等比压缩的基准，0为按照最长边，1为按照宽度，2为按照高度
                 compressLength: optImageCompressBorder        //能接受的最大边长，超过该值Flash会自动等比压缩
             };
-            //回调函数集合，支持传递函数名的字符串、函数句柄以及函数本身三种类型
+            //回调函数集合，支持传递函数이름的字符串、函数句柄以及函数本身三种类형태
             var callbacks={
                 selectFileCallback: function(selectFiles){                // 选择文件的回调
                     selectedImageCount += selectFiles.length;
                     if(selectedImageCount) baidu.g("upload").style.display = "";
                     dialog.buttons[0].setDisabled(true); //初始化时置灰确定按钮
                 },
-                deleteFileCallback: function(delFiles){                 // 删除文件的回调
+                deleteFileCallback: function(delFiles){                 // 삭제文件的回调
                     selectedImageCount -= delFiles.length;
                     if (!selectedImageCount) {
                         baidu.g("upload").style.display = "none";

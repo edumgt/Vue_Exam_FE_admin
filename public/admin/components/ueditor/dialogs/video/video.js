@@ -45,7 +45,7 @@
         addUrlChangeListener($G("videoUrl"));
         addOkListener();
 
-        //编辑视频时初始化相关信息
+        //수정视频时初始化相关信息
         (function(){
             var img = editor.selection.getRange().getClosedNode(),url;
             if(img && img.className){
@@ -68,7 +68,7 @@
     }
 
     /**
-     * 监听确认和取消两个按钮事件，회원执行插入或者清空正在播放的视频实例操作
+     * 监听确认和取消两个按钮事件，회원执行插入或者清空正在播放的视频实例관리
      */
     function addOkListener(){
         dialog.onok = function(){
@@ -111,7 +111,7 @@
     }
 
     /**
-     * 将单个视频信息插入编辑器中
+     * 将单个视频信息插入수정器中
      */
     function insertSingle(){
         var width = $G("videoWidth"),
@@ -129,7 +129,7 @@
     }
 
     /**
-     * 将元素id下的所有代表视频的图片插入编辑器中
+     * 将元素id下的所有代表视频的图片插入수정器中
      * @param id
      */
     function insertSearch(id){
@@ -262,7 +262,7 @@
     }
 
     /**
-     * 根据url生成视频预览
+     * 根据url生成视频미리보기
      * @param url
      */
     function createPreviewVideo(url){
@@ -335,7 +335,7 @@
                 $wrap = _this.$wrap,
             // 图片容器
                 $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
+            // 상태栏，包括进度和控制按钮
                 $statusBar = $wrap.find('.statusBar'),
             // 文件总体选择信息。
                 $info = $statusBar.find('.info'),
@@ -349,9 +349,9 @@
                 $placeHolder = $wrap.find('.placeholder'),
             // 总体进度条
                 $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
+            // 추가的文件数量
                 fileCount = 0,
-            // 添加的文件总大小
+            // 추가的文件总大小
                 fileSize = 0,
             // 优化retina, 在retina下这个值是2
                 ratio = window.devicePixelRatio || 1,
@@ -408,7 +408,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            // 当有文件추가进来时执行，负责view的创建
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -702,7 +702,7 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
+                        /* 추가额外的GET参数 */
                         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
                             url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
                         uploader.option('server', url);
@@ -715,7 +715,7 @@
             });
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+                //这里可以通过data对象추가POST参数
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 

@@ -131,7 +131,7 @@ div.edui-box {
 .edui-default .edui-toolbar .edui-combox {
     margin: 1px;
 }
-/*UI工具栏、编辑区域、底部*/
+/*UI工具栏、수정区域、底部*/
 .edui-default .edui-editor {
     border: 1px solid #d4d4d4;
     background-color: white;
@@ -480,7 +480,7 @@ div.edui-box {
     background-color: white;
     border: 1px solid gray;
 }
-/*普通按钮样式及状态*/
+/*普通按钮样式及상태*/
 .edui-default .edui-toolbar .edui-button .edui-icon,
 .edui-default .edui-toolbar .edui-menubutton .edui-icon,
 .edui-default .edui-toolbar .edui-splitbutton .edui-icon {
@@ -1021,7 +1021,7 @@ div.edui-box {
     background-color: white;
 }
 
-/* 解决嵌套导致的图标问题 */
+/* 解决嵌세트导致的图标问문항 */
 .edui-default .edui-for-insertorderedlist .edui-popup-body .edui-icon,
 .edui-default .edui-for-lineheight .edui-popup-body .edui-icon,
 .edui-default .edui-for-rowspacingtop .edui-popup-body .edui-icon,

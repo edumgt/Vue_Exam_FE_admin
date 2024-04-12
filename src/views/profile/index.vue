@@ -13,7 +13,7 @@
               <el-tab-pane label="时间线" name="timeline">
                 <timeline :userInfo="userInfo" />
               </el-tab-pane>
-              <el-tab-pane label="账号" name="account">
+              <el-tab-pane label="账번호" name="account">
                 <account :userInfo="userInfo"  />
               </el-tab-pane>
             </el-tabs>

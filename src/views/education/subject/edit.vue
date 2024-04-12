@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
 
-    <el-form :model="form" ref="form" label-width="100px" v-loading="formLoading">
-      <el-form-item label="学科：" required>
+    <el-form :model="form" ref="form" label-width="150px" v-loading="formLoading">
+      <el-form-item label="과목：" required>
         <el-input v-model="form.name"></el-input>
       </el-form-item>
       <el-form-item label="등급(학년)：" required>
@@ -11,8 +11,8 @@
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">提交</el-button>
-        <el-button @click="resetForm">重置</el-button>
+        <el-button type="primary" @click="submitForm">저장</el-button>
+        <el-button @click="resetForm">취소</el-button>
       </el-form-item>
     </el-form>
   </div>

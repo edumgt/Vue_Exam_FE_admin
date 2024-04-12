@@ -1,35 +1,35 @@
 <template>
   <div class="app-container">
-    <el-form :model="form" ref="form" label-width="100px" v-loading="formLoading">
+    <el-form :model="form" ref="form" label-width="150px" v-loading="formLoading">
       <el-form-item label="등급(학년)：">
         <el-select v-model="form.gradeLevel" placeholder="등급(학년)">
           <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="学科：" required>
-        <el-select v-model="form.subjectId" placeholder="学科" >
+      <el-form-item label="과목：" required>
+        <el-select v-model="form.subjectId" placeholder="과목" >
           <el-option v-for="item in subjects.filter(data => data.level==form.gradeLevel)" :key="item.id" :value="item.id" :label="item.name+' ( '+item.levelName+' )'"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="题干：" required>
+      <el-form-item label="문제：" required>
         <el-input v-model="form.title"   @focus="inputClick(form,'title')" />
       </el-form-item>
       <el-form-item label="答案：" required>
         <el-input v-model="item.content"  :key="item.prefix"  @focus="inputClick(item,'content')"  v-for="item in form.items" />
       </el-form-item>
-      <el-form-item label="解析：" required>
+      <el-form-item label="해설：" required>
         <el-input v-model="form.analyze"  @focus="inputClick(form,'analyze')" />
       </el-form-item>
-      <el-form-item label="分数：" required>
-        <el-input v-model="form.score" placeholder="分数支持小数点后一位"  />
+      <el-form-item label="점수：" required>
+        <el-input v-model="form.score" placeholder="점수支持小数点后一位"  />
       </el-form-item>
-      <el-form-item label="难度：" required>
+      <el-form-item label="난이도：" required>
         <el-rate v-model="form.difficult" class="question-item-rate"></el-rate>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">提交</el-button>
-        <el-button @click="resetForm">重置</el-button>
-        <el-button type="success" @click="showQuestion">预览</el-button>
+        <el-button type="primary" @click="submitForm">저장</el-button>
+        <el-button @click="resetForm">취소</el-button>
+        <el-button type="success" @click="showQuestion">미리보기</el-button>
       </el-form-item>
     </el-form>
     <el-dialog  :visible.sync="richEditor.dialogVisible"  append-to-body :close-on-click-modal="false" style="width: 100%;height: 100%"   :show-close="false" center>

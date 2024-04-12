@@ -21,22 +21,22 @@ var scrawl = function (options) {
 
         initOptions:function (options) {
             var me = this;
-            me.originalState(options);//初始页面状态
+            me.originalState(options);//初始页面상태
             me._buildToolbarColor(options.colorList);//动态生成颜色选择集合
 
-            me._addBoardListener(options.saveNum);//添加画板处理
-            me._addOPerateListener(options.saveNum);//添加undo redo clearBoard处理
-            me._addColorBarListener();//添加颜色选择处理
-            me._addBrushBarListener();//添加画笔大小处理
-            me._addEraserBarListener();//添加橡皮大小处理
-            me._addAddImgListener();//添加增添背景图片处理
-            me._addRemoveImgListenter();//删除背景图片处理
-            me._addScalePicListenter();//添加缩放处理
-            me._addClearSelectionListenter();//添加清楚选中状态处理
+            me._addBoardListener(options.saveNum);//추가画板处理
+            me._addOPerateListener(options.saveNum);//추가undo redo clearBoard处理
+            me._addColorBarListener();//추가颜色选择处理
+            me._addBrushBarListener();//추가画笔大小处理
+            me._addEraserBarListener();//추가橡皮大小处理
+            me._addAddImgListener();//추가增添背景图片处理
+            me._addRemoveImgListenter();//삭제背景图片处理
+            me._addScalePicListenter();//추가缩放处理
+            me._addClearSelectionListenter();//추가清楚选中상태处理
 
             me._originalColorSelect(options.drawBrushColor);//初始化颜色选中
             me._originalBrushSelect(options.drawBrushSize);//初始化画笔选中
-            me._clearSelection();//清楚选中状态
+            me._clearSelection();//清楚选中상태
         },
 
         originalState:function (options) {
@@ -388,7 +388,7 @@ var scrawl = function (options) {
                 context.drawImage(img, x, y, img.width, img.height);
             } else {
                 context.globalCompositeOperation = "destination-atop";
-                context.fillStyle = "#fff";//重置画布背景白色
+                context.fillStyle = "#fff";//취소画布背景白色
                 context.fillRect(0, 0, canvas.width, canvas.height);
             }
             try {
@@ -594,7 +594,7 @@ function ue_callback(url, state) {
 
     //移除遮罩层
     removeMaskLayer();
-    //状态响应
+    //상태响应
     if (state == "SUCCESS") {
         picBorard.innerHTML = "";
         img.onload = function () {
@@ -618,7 +618,7 @@ function removeMaskLayer() {
     maskLayer.innerHTML = "";
     dialog.buttons[0].setDisabled(false);
 }
-//添加遮罩层
+//추가遮罩层
 function addMaskLayer(html) {
     var maskLayer = $G("J_maskLayer");
     dialog.buttons[0].setDisabled(true);

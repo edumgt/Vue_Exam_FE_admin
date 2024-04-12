@@ -1,9 +1,9 @@
 <template>
   <el-form>
-    <el-form-item label="真实姓名">
+    <el-form-item label="이름">
       <el-input v-model.trim="userInfo.realName" />
     </el-form-item>
-    <el-form-item label="手机号">
+    <el-form-item label="휴대폰번호">
       <el-input v-model.trim="userInfo.phone" />
     </el-form-item>
     <el-form-item>
