@@ -19,7 +19,7 @@
 
     <div class="user-bio">
       <div class="user-education user-bio-section">
-        <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>个人简介</span></div>
+        <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>개인정보</span></div>
         <div class="user-bio-section-body">
           <div class="text-muted">
            无

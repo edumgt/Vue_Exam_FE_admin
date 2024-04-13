@@ -2300,7 +2300,7 @@
                 }
     
                 // 创建一个 html5 运行时的 placeholder
-                // 以至于外部추가原生 File 对象的时候能正确包裹一下供 webuploader 使用。
+                // 以至于外部추가原生 File 对象的时候能정답包裹一下供 webuploader 使用。
                 deferred = Base.Deferred();
                 runtime = new RuntimeClient('Placeholder');
                 runtime.connectRuntime({
@@ -3261,7 +3261,7 @@
                         reject = value;
                     };
     
-                    // 服务端响应了，不代表成功了，询问是否响应正确。
+                    // 服务端响应了，不代表成功了，询问是否响应정답。
                     if ( !owner.trigger( 'uploadAccept', block, ret, fn ) ) {
                         reject = reject || 'server';
                     }

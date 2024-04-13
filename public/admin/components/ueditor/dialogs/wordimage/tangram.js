@@ -1097,7 +1097,7 @@ baidu.sio._removeScriptTag = function(scr){
  * @config {Function} [onfailure] timeOut设定后才生效，到达超时时间时触发本函数
  * @remark
  * 1、与callByServer不同，callback参数只支持Function종류형태，不支持string。
- * 2、如果请求了一个不存在的页面，callback函数在IE/opera下也会被调用，因此使用者需要在onsuccess函数中判断数据是否正确加载。
+ * 2、如果请求了一个不存在的页面，callback函数在IE/opera下也会被调用，因此使用者需要在onsuccess函数中判断数据是否정답加载。
  * @meta standard
  * @see baidu.sio.callByServer
  */
@@ -1280,7 +1280,7 @@ baidu.json = baidu.json || {};
  * @returns {JSON} 해설结果json对象
  */
 baidu.json.parse = function (data) {
-    //2010/12/09：수정至不使用原生parse，不检测회원输入是否正确
+    //2010/12/09：수정至不使用原生parse，不检测회원输入是否정답
     return (new Function("return (" + data + ")"))();
 };
 /*

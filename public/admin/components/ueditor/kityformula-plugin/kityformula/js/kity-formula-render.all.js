@@ -5156,7 +5156,7 @@ _p[37] = {
                         space.bottom = -topDiff;
                     } else {
                         space.height -= bottomDiff;
-                        // 比较上下偏移， 获取正确的偏移值
+                        // 比较上下偏移， 获取정답的偏移值
                         topDiff = -topDiff;
                         bottomDiff = -bottomDiff;
                         if (topDiff > bottomDiff) {
@@ -5261,7 +5261,7 @@ _p[39] = {
                 var opShape = generateOperator.call(this), expBox = expr.getFixRenderBox(), scriptHanlder = this.parentExpression.isSideScript() ? "applySide" : "applyUpDown", space = new ScriptController(this, opShape, sup, sub, {
                     zoom: .5
                 })[scriptHanlder](), padding = 5, diff = (space.height + space.top + space.bottom - expBox.height) / 2;
-                // 应用偏移， 使图形在正确的位置上
+                // 应用偏移， 使图形在정답的位置上
                 opShape.translate(0, space.top);
                 sup.translate(0, space.top);
                 sub.translate(0, space.top);

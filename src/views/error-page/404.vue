@@ -10,7 +10,7 @@
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">请检查你的访问地址是否正确, 或点击下面按钮返回DashBoard.</div>
+        <div class="bullshit__info">请检查你的访问地址是否정답, 或点击下面按钮返回DashBoard.</div>
         <a href="" class="bullshit__return-home">返回DashBoard</a>
       </div>
     </div>

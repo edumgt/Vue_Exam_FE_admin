@@ -302,8 +302,8 @@ UE.I18N['zh-cn'] = {
         'errorUploadRetry':'上传失败，请重试',
         'errorHttp':'http请求错误',
         'errorServerUpload':'服务器返回出错',
-        'remoteLockError':"宽高不正确,不能所定比例",
-        'numError':"请输入正确的长度或者宽度值！例如：123，400",
+        'remoteLockError':"宽高不정답,不能所定比例",
+        'numError':"请输入정답的长度或者宽度值！例如：123，400",
         'imageUrlError':"不允许的图片格式或者图片域！",
         'imageLoadError':"图片加载失败！请检查链接地址或网络상태！",
         'searchRemind':"请输入搜索关键词",
@@ -365,7 +365,7 @@ UE.I18N['zh-cn'] = {
             'lang_format_advice':"建议使用mp4格式."
 
         },
-        'numError':"请输入正确的数值，如123,400",
+        'numError':"请输入정답的数值，如123,400",
         'floatLeft':"左浮动",
         'floatRight':"右浮动",
         '"default"':"默认",
@@ -657,7 +657,7 @@ UE.I18N['zh-cn'] = {
             lang_step:"1、点击顶部复制按钮，将地址复制到剪贴板；2、点击추가照片按钮，在弹出的对话框中使用Ctrl+V粘贴地址；3、点击打开后选择图片上传流程。"
         },
         'fileType':"图片",
-        'flashError':"FLASH初始化失败，请检查FLASH插件是否正确安装！",
+        'flashError':"FLASH初始化失败，请检查FLASH插件是否정답安装！",
         'netError':"网络连接错误，请重试！",
         'copySuccess':"图片地址已经复制！",
         'flashI18n':{} //留空默认中文

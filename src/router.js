@@ -185,7 +185,7 @@ const constantRoutes = [
         path: 'index',
         component: () => import('@/views/profile/index'),
         name: 'Profile',
-        meta: { title: '个人简介', icon: 'user', noCache: true }
+        meta: { title: '개인정보', icon: 'user', noCache: true }
       }
     ]
   },

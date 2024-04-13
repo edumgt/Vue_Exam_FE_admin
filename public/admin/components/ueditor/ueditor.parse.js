@@ -793,7 +793,7 @@ UE.parse.register('charts',function( utils ){
 
     }
 
-    //根据config해설出正确的종류别和图表数据信息
+    //根据config해설出정답的종류别和图表数据信息
     function analysisConfig ( config ) {
 
         var series = [],
