@@ -13,25 +13,23 @@
     </el-form>
 
     <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
-      <el-table-column prop="id" label="Id" />
-      <el-table-column prop="userName" label="아이디"/>
-      <el-table-column prop="realName" label="이름" />
-      <el-table-column prop="userLevel" label="학년"  :formatter="levelFormatter"/>
-      <el-table-column prop="sex" label="성별" width="60px;" :formatter="sexFormatter"/>
-      <el-table-column prop="phone" label="휴대폰번호"/>
+      <el-table-column prop="id" label="Id" width="80px;" />
+      <el-table-column prop="userName" label="아이디" width="180px;"/>
+      <el-table-column prop="realName" label="이름" width="180px;" />
+      <el-table-column prop="userLevel" label="학년"  :formatter="levelFormatter" width="180px;" />
+      <el-table-column prop="sex" label="성별" width="100px;" :formatter="sexFormatter"/>
+      <el-table-column prop="phone" label="휴대폰번호" width="180px;" />
       <el-table-column prop="createTime" label="생성일자" width="160px"/>
-      <el-table-column label="상태" prop="status" width="70px">
+      <el-table-column label="상태" prop="status" width="180px">
         <template slot-scope="{row}">
           <el-tag :type="statusTagFormatter(row.status)">
             {{ statusFormatter(row.status) }}
           </el-tag>
         </template>
       </el-table-column>
-      <el-table-column width="220px" label="관리" align="center">
+      <el-table-column label="관리" align="center">
         <template slot-scope="{row}">
-          <el-button size="mini"  @click="changeStatus(row)" class="link-left">
-            {{ statusBtnFormatter(row.status) }}
-          </el-button>
+
           <router-link :to="{path:'/user/student/edit', query:{id:row.id}}" class="link-left">
             <el-button size="mini" >수정</el-button>
           </router-link>

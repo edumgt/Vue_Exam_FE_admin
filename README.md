@@ -1,5 +1,7 @@
 # exam-admin
 
+## nvm use 16.x
+
 ## Pre Command
 ```
 npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/

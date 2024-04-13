@@ -1,48 +1,48 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParam" ref="queryForm" :inline="true">
-      <el-form-item label="문항ID：">
+      <el-form-item label="题目ID：">
         <el-input v-model="queryParam.id" clearable></el-input>
       </el-form-item>
-      <el-form-item label="등급(학년)：">
-        <el-select v-model="queryParam.level" placeholder="등급(학년)">
+      <el-form-item label="年级：">
+        <el-select v-model="queryParam.level" placeholder="年级">
           <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="과목：">
+      <el-form-item label="学科：">
         <el-select v-model="queryParam.subjectId" clearable>
           <el-option v-for="item in subjects.filter(data => data.level==queryParam.level)" :key="item.id" :value="item.id"
                      :label="item.name+' ( '+item.levelName+' )'"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="문항형태：">
+      <el-form-item label="题型：">
         <el-select v-model="queryParam.questionType" clearable>
           <el-option v-for="item in questionType" :key="item.key" :value="item.key" :label="item.value"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm">검색</el-button>
+        <el-button type="primary" @click="submitForm">查询</el-button>
         <el-popover placement="bottom" trigger="click">
           <el-button type="warning" size="mini" v-for="item in editUrlEnum" :key="item.key"
                      @click="$router.push({path:item.value})">{{item.name}}
           </el-button>
-          <el-button slot="reference" type="primary" class="link-left">추가</el-button>
+          <el-button slot="reference" type="primary" class="link-left">添加</el-button>
         </el-popover>
       </el-form-item>
     </el-form>
     <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
       <el-table-column prop="id" label="Id" width="90px"/>
-      <el-table-column prop="subjectId" label="과목" :formatter="subjectFormatter" width="120px"/>
-      <el-table-column prop="questionType" label="문항형태" :formatter="questionTypeFormatter" width="80px"/>
-      <el-table-column prop="shortTitle" label="문제" show-overflow-tooltip/>
-      <el-table-column prop="score" label="점수" width="60px"/>
-      <el-table-column prop="difficult" label="난이도" width="70px"/>
-      <el-table-column prop="createTime" label="생성일자" width="160px"/>
-      <el-table-column label="관리" align="center" width="220px">
+      <el-table-column prop="subjectId" label="学科" :formatter="subjectFormatter" width="120px"/>
+      <el-table-column prop="questionType" label="题型" :formatter="questionTypeFormatter" width="70px"/>
+      <el-table-column prop="shortTitle" label="题干" show-overflow-tooltip/>
+      <el-table-column prop="score" label="分数" width="60px"/>
+      <el-table-column prop="difficult" label="难度" width="60px"/>
+      <el-table-column prop="createTime" label="创建时间" width="160px"/>
+      <el-table-column label="操作" align="center" width="220px">
         <template slot-scope="{row}">
-          <el-button size="mini"   @click="showQuestion(row)">미리보기</el-button>
-          <el-button size="mini"  @click="editQuestion(row)">수정</el-button>
-          <el-button size="mini" type="danger" @click="deleteQuestion(row)" class="link-left">삭제</el-button>
+          <el-button size="mini"   @click="showQuestion(row)">预览</el-button>
+          <el-button size="mini"  @click="editQuestion(row)">编辑</el-button>
+          <el-button size="mini" type="danger" @click="deleteQuestion(row)" class="link-left">删除</el-button>
         </template>
       </el-table-column>
     </el-table>

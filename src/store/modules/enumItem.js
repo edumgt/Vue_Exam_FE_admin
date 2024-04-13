@@ -1,18 +1,41 @@
 // initial state
 const state = {
   user: {
-    sexEnum: [{ 'key': 1, 'value': '男' }, { 'key': 2, 'value': '女' }],
+    sexEnum: [{ 'key': 1, 'value': '남' }, { 'key': 2, 'value': '여' }],
     statusEnum: [{ 'key': 1, 'value': '사용중' }, { 'key': 2, 'value': '중지중' }],
-    levelEnum: [{ 'key': 1, 'value': '一등급(학년)' }, { 'key': 2, 'value': '二등급(학년)' }, { 'key': 3, 'value': '三등급(학년)' }, { 'key': 4, 'value': '四등급(학년)' }, { 'key': 5, 'value': '五등급(학년)' }, { 'key': 6, 'value': '六등급(학년)' },
-      { 'key': 7, 'value': '初一' }, { 'key': 8, 'value': '初二' }, { 'key': 9, 'value': '初三' },
-      { 'key': 10, 'value': '高一' }, { 'key': 11, 'value': '高二' }, { 'key': 12, 'value': '高三' }],
+    levelEnum: [
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 1, 'value': '초등 1학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 2, 'value': '초등 2학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 3, 'value': '초등 3학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 4, 'value': '초등 4학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 5, 'value': '초등 5학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 6, 'value': '초등 6학년' },
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 7, 'value': '중등 1학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 8, 'value': '중등 2학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 9, 'value': '중등 3학년' },
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 10, 'value': '고등 1학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 11, 'value': '고등 2학년' }, 
+      // eslint-disable-next-line no-trailing-spaces
+      { 'key': 12, 'value': '고등 3학년' }
+    ],
     roleEnum: [{ 'key': 1, 'value': '학생' }, { 'key': 2, 'value': '강사' }, { 'key': 3, 'value': '관리자' }],
     statusTag: [{ 'key': 1, 'value': 'success' }, { 'key': 2, 'value': 'danger' }],
     statusBtn: [{ 'key': 1, 'value': '중지중' }, { 'key': 2, 'value': '사용중' }]
   },
   exam: {
     examPaper: {
-      paperTypeEnum: [{ 'key': 1, 'value': '固定시험지' }, { 'key': 4, 'value': '时段시험지' }]
+      paperTypeEnum: [{ 'key': 1, 'value': '중간고사' }, { 'key': 4, 'value': '기말고사' }]
     },
     question: {
       typeEnum: [{ 'key': 1, 'value': '단일 선택문항' }, { 'key': 2, 'value': '다중선택 객관식' }, { 'key': 3, 'value': '참 또는 거짓' }, { 'key': 4, 'value': '빈칸채우기' }, { 'key': 5, 'value': '단답형' }],
