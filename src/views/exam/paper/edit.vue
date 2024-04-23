@@ -46,7 +46,7 @@
       <el-form-item>
         <el-button type="primary" @click="submitForm">저장</el-button>
         <el-button @click="resetForm">초기화</el-button>
-        <el-button type="success" @click="addTitle">추가제목</el-button>
+        <el-button type="success" @click="addTitle">문항추가</el-button>
       </el-form-item>
     </el-form>
     <el-dialog :visible.sync="questionPage.showDialog">
