@@ -2,8 +2,8 @@
   "name": "exam-admin",
   "version": "1.0.0",
   "author": "alvis",
-	"description": "시험모듈",
-  "license":"MIT",
+  "description": "시험모듈",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode dev",

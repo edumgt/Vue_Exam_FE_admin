@@ -1,6 +1,6 @@
 # exam-admin
 
-## nvm use 16.x
+## nvm use 12 ~ 16
 
 ## Pre Command
 ```
