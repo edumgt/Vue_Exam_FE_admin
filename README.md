@@ -44,14 +44,80 @@ npm -v
 
 #### 옵션 A: 기존 가이드(taobao 미러) 사용
 ```bash
-npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-npm install --registry https://registry.npm.taobao.org
+# 1) node-sass 바이너리 다운로드 미러 (sass_binary_site)
+npm config set sass_binary_site https://npmmirror.com/mirrors/node-sass/
+
+# 2) npm registry 미러
+npm config set registry https://registry.npmmirror.com/
+
+# 3) 설치
+npm install
+# (또는 1회성)
+# npm install --registry https://registry.npmmirror.com/
+```
+---
+```
+npm config get registry
+npm config get sass_binary_site
+npm config list -l | grep -E "registry|sass_binary_site"
+```
+---
 ```
 
-#### 옵션 B: 기본 npm 레지스트리 사용
-```bash
+rm -rf node_modules package-lock.json npm-shrinkwrap.json
+
+npm cache clean --force
+npm install --registry https://registry.npmmirror.com/
+```
+---
+
+# 프로젝트/사용자/전역 npmrc에서 taobao 찾기
+
+```
+grep -RIn "registry\.npm\.taobao\.org\|npm\.taobao\.org" \
+  .npmrc ~/.npmrc /etc/npmrc 2>/dev/null || true
+
+
+```
+---
+```
+cd /home/Vue_Exam_FE_admin
+
+npm remove node-sass
+npm i -D sass
+
+# 캐시/락/모듈 정리 후 재설치(권장)
+rm -rf node_modules package-lock.json
+npm cache clean --force
 npm install
 ```
+
+---
+```
+# 1) 정확히 버전 맞추기
+npm i -D vue-template-compiler@2.6.10
+
+# 2) 잠재적 꼬임 방지: lock/node_modules 정리 후 재설치 (권장)
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+
+# 3) 실행
+npm run serve
+```
+---
+```
+npm i vue@2.7.16
+npm i -D vue-template-compiler@2.7.16
+
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+npm run serve
+```
+---
+
+
 
 ### 3) 환경 변수 확인
 아래 파일로 환경이 분리되어 있습니다.
