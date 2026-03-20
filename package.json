@@ -2,41 +2,33 @@
   "name": "exam-admin",
   "version": "1.0.0",
   "author": "alvis",
-  "description": "시험모듈",
+  "description": "시험모듈 관리자",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mode dev",
-    "build": "vue-cli-service build --mode prod",
-    "build:dev": "vue-cli-service build --mode dev",
-    "build:test": "vue-cli-service build --mode test",
-    "build:pre": "vue-cli-service build --mode pre",
-    "build:prod": "vue-cli-service build --mode prod",
-    "lint": "vue-cli-service lint"
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "build:dev": "vite build --mode development",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "core-js": "^2.6.9",
-    "element-ui": "^2.10.1",
-    "js-cookie": "2.2.0",
-    "normalize.css": "8.0.1",
-    "nprogress": "0.2.0",
-    "sass-loader": "^7.1.0",
-    "vue": "^2.7.16",
-    "vue-count-to": "^1.0.13",
-    "vue-router": "^3.0.3",
-    "vuex": "3.1.0"
+    "@quasar/extras": "^1.16.17",
+    "axios": "^1.8.2",
+    "js-cookie": "^3.0.5",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.3.1",
+    "quasar": "^2.18.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "5.2.2",
-    "sass": "^1.97.3",
-    "svg-sprite-loader": "4.1.6",
-    "vue-template-compiler": "^2.7.16"
+    "@quasar/vite-plugin": "^1.8.0",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "sass": "^1.85.1",
+    "vite": "^6.2.1"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
   }
 }

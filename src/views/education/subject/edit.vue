@@ -1,78 +1,70 @@
 <template>
   <div class="app-container">
-
-    <el-form :model="form" ref="form" label-width="150px" v-loading="formLoading">
-      <el-form-item label="과목：" required>
-        <el-input v-model="form.name"></el-input>
-      </el-form-item>
-      <el-form-item label="등급(학년)：" required>
-        <el-select v-model="form.level" placeholder="등급(학년)">
-          <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm">저장</el-button>
-        <el-button @click="resetForm">취소</el-button>
-      </el-form-item>
-    </el-form>
+    <q-card flat bordered>
+      <q-card-section>
+        <q-form @submit="saveSubject" class="q-gutter-md">
+          <q-input
+            v-model="form.name"
+            label="과목명"
+            outlined
+            dense
+            :rules="[val => !!val || '필수입력']"
+          />
+          <q-select
+            v-model="form.userLevel"
+            :options="levelOptions"
+            label="학년"
+            outlined
+            dense
+            emit-value
+            map-options
+            :rules="[val => !!val || '필수입력']"
+          />
+          <div>
+            <q-btn unelevated color="primary" type="submit" label="저장" />
+            <q-btn flat @click="goBack" label="취소" class="q-ml-sm" />
+          </div>
+        </q-form>
+      </q-card-section>
+    </q-card>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { useEnumItemStore } from '@/stores/enumItem'
 import subjectApi from '@/api/subject'
+import { Notify } from 'quasar'
 
 export default {
+  setup () {
+    const enumItemStore = useEnumItemStore()
+    return { enumItemStore }
+  },
   data () {
     return {
-      form: {
-        id: null,
-        name: '',
-        level: 1,
-        levelName: ''
-      },
-      formLoading: false
-    }
-  },
-  created () {
-    let id = this.$route.query.id
-    let _this = this
-    if (id && parseInt(id) !== 0) {
-      _this.formLoading = true
-      subjectApi.select(id).then(re => {
-        _this.form = re.response
-        _this.formLoading = false
-      })
-    }
-  },
-  methods: {
-    submitForm () {
-      let _this = this
-      this.formLoading = true
-      this.levelName = this.enumFormat(this.levelEnum, this.form.level)
-      subjectApi.edit(this.form).then(data => {
-        if (data.code === 1) {
-          _this.form.id = data.response.id
-          _this.$message.success(data.message)
-        } else {
-          _this.$message.error(data.message)
-        }
-        _this.formLoading = false
-      }).catch(e => {
-        _this.formLoading = false
-      })
-    },
-    resetForm () {
-      this.$refs['form'].resetFields()
+      form: { id: null, name: '', userLevel: null }
     }
   },
   computed: {
-    ...mapGetters('enumItem', [
-      'enumFormat'
-    ]),
-    ...mapState('enumItem', {
-      levelEnum: state => state.user.levelEnum
-    })
+    levelOptions () {
+      return this.enumItemStore.user.levelEnum.map(e => ({ label: e.value, value: e.key }))
+    }
+  },
+  created () {
+    if (this.$route.query.id) {
+      subjectApi.select(this.$route.query.id).then(re => { this.form = re.response })
+    }
+  },
+  methods: {
+    saveSubject () {
+      subjectApi.edit(this.form).then(() => {
+        Notify.create({ type: 'positive', message: '저장되었습니다.' })
+        this.goBack()
+      })
+    },
+    goBack () {
+      this.$router.push({ path: '/education/subject/list' })
+    }
   }
 }
 </script>

@@ -1,33 +1,17 @@
 <template>
-  <div class="wscn-http404-container">
-    <div class="wscn-http404">
-      <div class="pic-404">
-        <img class="pic-404__parent" src="@/assets/404_images/404.png" alt="404">
-        <img class="pic-404__child left" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child mid" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child right" src="@/assets/404_images/404_cloud.png" alt="404">
-      </div>
-      <div class="bullshit">
-        <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">请检查你的访问地址是否정답, 或点击下面按钮返回DashBoard.</div>
-        <a href="" class="bullshit__return-home">返回DashBoard</a>
-      </div>
+  <div class="error-page">
+    <div class="error-content">
+      <div class="text-h1 text-grey-5">404</div>
+      <div class="text-h5 q-mb-md">페이지를 찾을 수 없습니다</div>
+      <q-btn unelevated color="primary" label="홈으로" :to="'/'" />
     </div>
   </div>
 </template>
 
-<script>
-
-export default {
-  name: 'Page404',
-  computed: {
-    message () {
-      return '页面未找到...'
-    }
-  }
-}
-</script>
+<style scoped>
+.error-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.error-content { text-align: center; }
+</style>
 
 <style lang="scss" scoped>
 .wscn-http404-container{

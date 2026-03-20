@@ -1,45 +1,32 @@
-import Vue from 'vue'
+import { createApp } from 'vue'
+import { Quasar, Loading, Notify, Dialog } from 'quasar'
+import { createPinia } from 'pinia'
+import '@quasar/extras/material-icons/material-icons.css'
+import 'quasar/src/css/index.sass'
+import 'nprogress/nprogress.css'
+import '@/styles/index.scss'
 import App from './App.vue'
 import { router } from './router'
-import store from './store'
-import 'normalize.css/normalize.css'
-import Element from 'element-ui'
-import './styles/element-variables.scss'
 
-import '@/styles/index.scss' // global css
-import './icons' // icon
-import NProgress from 'nprogress' // progress bar
-import 'nprogress/nprogress.css' // progress bar style
+const app = createApp(App)
 
-Vue.use(Element, {
-  size: 'medium' // set element-ui default size
+app.use(Quasar, {
+  plugins: { Loading, Notify, Dialog },
+  config: {
+    loading: {}
+  }
 })
 
-Vue.config.productionTip = false
+app.use(createPinia())
+app.use(router)
 
-NProgress.configure({ showSpinner: false }) // NProgress Configuration
-
-router.beforeEach(async (to, from, next) => {
-  // start progress bar
-  NProgress.start()
+router.beforeEach((to, from, next) => {
   if (to.meta.title !== undefined) {
     document.title = to.meta.title
   } else {
     document.title = '\u200E'
   }
-  store.commit('router/initRoutes')
   next()
 })
 
-router.afterEach(() => {
-  // finish progress bar
-  NProgress.done()
-})
-
-Vue.prototype.$$router = router
-
-new Vue({
-  router: router,
-  store: store,
-  render: h => h(App)
-}).$mount('#app')
+app.mount('#app')

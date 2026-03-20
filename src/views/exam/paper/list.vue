@@ -1,67 +1,108 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParam" ref="queryForm" :inline="true">
-      <el-form-item label="문항ID：">
-        <el-input v-model="queryParam.id" clearable></el-input>
-      </el-form-item>
-      <el-form-item label="학년：">
-        <el-select v-model="queryParam.level" placeholder="학년">
-          <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="과목：">
-        <el-select v-model="queryParam.subjectId"  clearable>
-          <el-option v-for="item in subjects.filter(data => data.level==queryParam.level)" :key="item.id" :value="item.id" :label="item.name+' ( '+item.levelName+' )'"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm">검색</el-button>
-        <router-link :to="{path:'/exam/paper/edit'}" class="link-left">
-          <el-button type="primary">추가</el-button>
-        </router-link>
-      </el-form-item>
-    </el-form>
-    <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
-      <el-table-column prop="id" label="Id" width="90px"/>
-      <el-table-column prop="subjectId" label="과목" :formatter="subjectFormatter" width="180px" />
-      <el-table-column prop="name" label="이름"  />
-      <el-table-column prop="createTime" label="생성일시" width="160px"/>
-      <el-table-column  label="관리" align="center"  width="160px">
-        <template slot-scope="{row}">
-          <el-button size="mini" @click="$router.push({path:'/exam/paper/edit',query:{id:row.id}})" >수정</el-button>
-          <el-button size="mini" type="danger" class="link-left">삭제</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="queryParam.pageIndex" :limit.sync="queryParam.pageSize"
-                @pagination="search"/>
+    <div class="row items-center q-mb-md q-gutter-sm">
+      <q-input v-model="queryParam.id" label="시험지Id" dense outlined clearable />
+      <q-select
+        v-model="queryParam.userLevel"
+        :options="levelOptions"
+        label="학년"
+        dense outlined emit-value map-options clearable
+        style="min-width:120px"
+      />
+      <q-select
+        v-model="queryParam.subjectId"
+        :options="subjectOptions"
+        label="과목"
+        dense outlined emit-value map-options clearable
+        style="min-width:160px"
+      />
+      <q-btn unelevated color="primary" label="검색" @click="submitForm" />
+      <q-btn unelevated color="primary" label="추가" :to="{ path: '/exam/paper/edit' }" />
+    </div>
+
+    <q-table
+      :rows="tableData"
+      :columns="columns"
+      :loading="listLoading"
+      row-key="id"
+      flat bordered
+      hide-bottom
+      v-model:pagination="tablePagination"
+    >
+      <template v-slot:body-cell-subjectId="{ row }">
+        <q-td>{{ examStore.subjectEnumFormat(row.subjectId) }}</q-td>
+      </template>
+      <template v-slot:body-cell-paperType="{ row }">
+        <q-td>{{ paperTypeFormatter(row.paperType) }}</q-td>
+      </template>
+      <template v-slot:body-cell-actions="{ row }">
+        <q-td class="text-center">
+          <q-btn size="sm" flat @click="$router.push({ path: '/exam/paper/edit', query: { id: row.id } })">수정</q-btn>
+          <q-btn size="sm" flat color="negative" class="q-ml-xs">삭제</q-btn>
+        </q-td>
+      </template>
+    </q-table>
+
+    <pagination
+      v-show="total > 0"
+      :total="total"
+      v-model:page="queryParam.pageIndex"
+      v-model:limit="queryParam.pageSize"
+      @pagination="search"
+    />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState, mapActions } from 'vuex'
-import Pagination from '@/components/Pagination'
+import { useEnumItemStore } from '@/stores/enumItem'
+import { useExamStore } from '@/stores/exam'
+import Pagination from '@/components/Pagination/index.vue'
 import examPaperApi from '@/api/examPaper'
 
 export default {
   components: { Pagination },
+  setup () {
+    const enumItemStore = useEnumItemStore()
+    const examStore = useExamStore()
+    return { enumItemStore, examStore }
+  },
   data () {
     return {
       queryParam: {
-        id: null,
-        level: 1,
+        id: '',
+        userLevel: null,
         subjectId: null,
         pageIndex: 1,
         pageSize: 10
       },
-      subjectFilter: null,
       listLoading: true,
       tableData: [],
-      total: 0
+      total: 0,
+      tablePagination: { rowsPerPage: 0 },
+      columns: [
+        { name: 'id', field: 'id', label: 'Id', align: 'left' },
+        { name: 'subjectId', field: 'subjectId', label: '과목', align: 'left' },
+        { name: 'name', field: 'name', label: '시험지명', align: 'left' },
+        { name: 'paperType', field: 'paperType', label: '유형', align: 'left' },
+        { name: 'score', field: 'score', label: '총점', align: 'left' },
+        { name: 'createTime', field: 'createTime', label: '생성일자', align: 'left' },
+        { name: 'actions', label: '관리', align: 'center' }
+      ]
+    }
+  },
+  computed: {
+    levelOptions () {
+      return this.enumItemStore.user.levelEnum.map(e => ({ label: e.value, value: e.key }))
+    },
+    subjectOptions () {
+      return this.examStore.subjects.map(s => ({ label: s.name + ' (' + s.levelName + ')', value: s.id }))
+    },
+    paperTypeEnum () {
+      return this.enumItemStore.exam.examPaper.paperTypeEnum
     }
   },
   created () {
-    this.initSubject()
+    this.examStore.initSubject()
     this.search()
   },
   methods: {
@@ -77,20 +118,11 @@ export default {
         this.total = re.total
         this.queryParam.pageIndex = re.pageNum
         this.listLoading = false
-      })
+      }).catch(() => { this.listLoading = false })
     },
-    subjectFormatter  (row, column, cellValue, index) {
-      return this.subjectEnumFormat(cellValue)
-    },
-    ...mapActions('exam', { initSubject: 'initSubject' })
-  },
-  computed: {
-    ...mapGetters('enumItem', ['enumFormat']),
-    ...mapState('enumItem', {
-      levelEnum: state => state.user.levelEnum
-    }),
-    ...mapGetters('exam', ['subjectEnumFormat']),
-    ...mapState('exam', { subjects: state => state.subjects })
+    paperTypeFormatter (val) {
+      return this.enumItemStore.enumFormat(this.paperTypeEnum, val)
+    }
   }
 }
 </script>
