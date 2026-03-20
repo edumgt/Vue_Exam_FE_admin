@@ -50,7 +50,7 @@
 
 <script>
 import { useEnumItemStore } from '@/stores/enumItem'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/index.vue'
 import subjectApi from '@/api/subject'
 
 export default {

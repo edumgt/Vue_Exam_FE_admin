@@ -92,7 +92,7 @@ export default {
   },
   computed: {
     menuRoutes () {
-      return routes.filter(r => r.component && r.component.name !== 'Login' && !r.hidden && r.path !== '/:pathMatch(.*)*' && r.path !== '/profile')
+      return routes.filter(r => r.path !== '/login' && !r.hidden && r.path !== '/:pathMatch(.*)*' && r.children && r.children.length > 0)
     }
   },
   methods: {

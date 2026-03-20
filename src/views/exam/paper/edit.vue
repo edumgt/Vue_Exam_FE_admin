@@ -190,7 +190,7 @@
 import { useEnumItemStore } from '@/stores/enumItem'
 import { useExamStore } from '@/stores/exam'
 import { Notify } from 'quasar'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/index.vue'
 import QuestionShow from '../question/components/Show.vue'
 import examPaperApi from '@/api/examPaper'
 import questionApi from '@/api/question'

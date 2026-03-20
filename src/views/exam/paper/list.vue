@@ -56,7 +56,7 @@
 <script>
 import { useEnumItemStore } from '@/stores/enumItem'
 import { useExamStore } from '@/stores/exam'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/index.vue'
 import examPaperApi from '@/api/examPaper'
 
 export default {

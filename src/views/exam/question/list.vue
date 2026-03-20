@@ -90,7 +90,7 @@
 <script>
 import { useEnumItemStore } from '@/stores/enumItem'
 import { useExamStore } from '@/stores/exam'
-import Pagination from '@/components/Pagination'
+import Pagination from '@/components/Pagination/index.vue'
 import Show from './components/Show.vue'
 import questionApi from '@/api/question'
 
