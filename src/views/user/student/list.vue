@@ -1,69 +1,79 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParam" ref="queryForm" :inline="true">
-      <el-form-item label="아이디：">
-        <el-input v-model="queryParam.userName"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm">검색</el-button>
-        <router-link :to="{path:'/user/student/edit'}" class="link-left">
-          <el-button type="primary">추가</el-button>
-        </router-link>
-      </el-form-item>
-    </el-form>
-
-    <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
-      <el-table-column prop="id" label="Id" width="80px;" />
-      <el-table-column prop="userName" label="아이디" width="180px;"/>
-      <el-table-column prop="realName" label="이름" width="180px;" />
-      <el-table-column prop="userLevel" label="학년"  :formatter="levelFormatter" width="180px;" />
-      <el-table-column prop="sex" label="성별" width="100px;" :formatter="sexFormatter"/>
-      <el-table-column prop="phone" label="휴대폰번호" width="180px;" />
-      <el-table-column prop="createTime" label="생성일자" width="160px"/>
-      <el-table-column label="상태" prop="status" width="180px">
-        <template slot-scope="{row}">
-          <el-tag :type="statusTagFormatter(row.status)">
-            {{ statusFormatter(row.status) }}
-          </el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="관리" align="center">
-        <template slot-scope="{row}">
-
-          <router-link :to="{path:'/user/student/edit', query:{id:row.id}}" class="link-left">
-            <el-button size="mini" >수정</el-button>
-          </router-link>
-          <el-button size="mini" type="danger" @click="deleteUser(row)" class="link-left">삭제</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="queryParam.pageIndex" :limit.sync="queryParam.pageSize"
-                @pagination="search"/>
+    <div class="row items-center q-mb-md">
+      <q-input v-model="queryParam.userName" label="아이디" dense outlined class="q-mr-sm" />
+      <q-btn unelevated color="primary" label="검색" @click="submitForm" />
+      <q-btn unelevated color="primary" label="추가" class="q-ml-sm" :to="{path:'/user/student/edit'}" />
+    </div>
+    <q-table
+      :rows="tableData"
+      :columns="columns"
+      :loading="listLoading"
+      row-key="id"
+      flat
+      bordered
+      v-model:pagination="tablePagination"
+      hide-bottom
+    >
+      <template v-slot:body-cell-userLevel="{row}">
+        <q-td>{{ levelFormatter(row.userLevel) }}</q-td>
+      </template>
+      <template v-slot:body-cell-sex="{row}">
+        <q-td>{{ sexFormatter(row.sex) }}</q-td>
+      </template>
+      <template v-slot:body-cell-status="{row}">
+        <q-td>
+          <q-badge :color="statusTagFormatter(row.status)" :label="statusFormatter(row.status)" />
+        </q-td>
+      </template>
+      <template v-slot:body-cell-actions="{row}">
+        <q-td class="text-center">
+          <q-btn size="sm" flat @click="$router.push({path:'/user/student/edit', query:{id:row.id}})">수정</q-btn>
+          <q-btn size="sm" flat color="negative" @click="deleteUser(row)" class="q-ml-xs">삭제</q-btn>
+        </q-td>
+      </template>
+    </q-table>
+    <pagination v-show="total>0" :total="total" v-model:page="queryParam.pageIndex" v-model:limit="queryParam.pageSize" @pagination="search"/>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { useEnumItemStore } from '@/stores/enumItem'
 import Pagination from '@/components/Pagination'
 import userApi from '@/api/user'
 
 export default {
   components: { Pagination },
+  setup () {
+    const enumItemStore = useEnumItemStore()
+    return { enumItemStore }
+  },
   data () {
     return {
-      queryParam: {
-        userName: '',
-        role: 1,
-        pageIndex: 1,
-        pageSize: 10
-      },
+      queryParam: { userName: '', role: 1, pageIndex: 1, pageSize: 10 },
       listLoading: true,
       tableData: [],
-      total: 0
+      total: 0,
+      tablePagination: { rowsPerPage: 0 },
+      columns: [
+        { name: 'id', field: 'id', label: 'Id', align: 'left' },
+        { name: 'userName', field: 'userName', label: '아이디', align: 'left' },
+        { name: 'realName', field: 'realName', label: '이름', align: 'left' },
+        { name: 'userLevel', field: 'userLevel', label: '학년', align: 'left' },
+        { name: 'sex', field: 'sex', label: '성별', align: 'left' },
+        { name: 'phone', field: 'phone', label: '휴대폰번호', align: 'left' },
+        { name: 'createTime', field: 'createTime', label: '생성일자', align: 'left' },
+        { name: 'status', field: 'status', label: '상태', align: 'left' },
+        { name: 'actions', label: '관리', align: 'center' }
+      ]
     }
   },
-  created () {
-    this.search()
+  created () { this.search() },
+  computed: {
+    levelEnum () { return this.enumItemStore.user.levelEnum },
+    sexEnum () { return this.enumItemStore.user.sexEnum },
+    statusEnum () { return this.enumItemStore.user.statusEnum },
+    statusTag () { return this.enumItemStore.user.statusTag }
   },
   methods: {
     search () {
@@ -74,45 +84,14 @@ export default {
         this.total = re.total
         this.queryParam.pageIndex = re.pageNum
         this.listLoading = false
-      })
+      }).catch(() => { this.listLoading = false })
     },
-    changeStatus (status) {
-
-    },
-    deleteUser (row) {
-
-    },
-    submitForm () {
-      this.queryParam.pageIndex = 1
-      this.search()
-    },
-    levelFormatter  (row, column, cellValue, index) {
-      return this.enumFormat(this.levelEnum, cellValue)
-    },
-    sexFormatter  (row, column, cellValue, index) {
-      return this.enumFormat(this.sexEnum, cellValue)
-    },
-    statusFormatter (status) {
-      return this.enumFormat(this.statusEnum, status)
-    },
-    statusTagFormatter (status) {
-      return this.enumFormat(this.statusTag, status)
-    },
-    statusBtnFormatter (status) {
-      return this.enumFormat(this.statusBtn, status)
-    }
-  },
-  computed: {
-    ...mapGetters('enumItem', [
-      'enumFormat'
-    ]),
-    ...mapState('enumItem', {
-      sexEnum: state => state.user.sexEnum,
-      statusEnum: state => state.user.statusEnum,
-      statusTag: state => state.user.statusTag,
-      statusBtn: state => state.user.statusBtn,
-      levelEnum: state => state.user.levelEnum
-    })
+    submitForm () { this.queryParam.pageIndex = 1; this.search() },
+    deleteUser (row) {},
+    levelFormatter (val) { return this.enumItemStore.enumFormat(this.levelEnum, val) },
+    sexFormatter (val) { return this.enumItemStore.enumFormat(this.sexEnum, val) },
+    statusFormatter (val) { return this.enumItemStore.enumFormat(this.statusEnum, val) },
+    statusTagFormatter (val) { return this.enumItemStore.enumFormat(this.statusTag, val) }
   }
 }
 </script>
