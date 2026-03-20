@@ -1,54 +1,82 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParam" ref="queryForm" :inline="true">
-      <el-form-item label="등급(학년)：">
-        <el-select v-model="queryParam.level" placeholder="등급(학년)" clearable="">
-          <el-option v-for="item in levelEnum" :key="item.key" :value="item.key" :label="item.value"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm">검색</el-button>
-        <router-link :to="{path:'/education/subject/edit'}" class="link-left">
-          <el-button type="primary">추가</el-button>
-        </router-link>
-      </el-form-item>
-    </el-form>
+    <div class="row items-center q-mb-md q-gutter-sm">
+      <q-select
+        v-model="queryParam.userLevel"
+        :options="levelOptions"
+        label="학년"
+        dense
+        outlined
+        emit-value
+        map-options
+        clearable
+        style="min-width:140px"
+      />
+      <q-btn unelevated color="primary" label="검색" @click="submitForm" />
+      <q-btn unelevated color="primary" label="추가" :to="{ path: '/education/subject/edit' }" />
+    </div>
 
-    <el-table v-loading="listLoading" :data="tableData" border fit highlight-current-row style="width: 100%">
-      <el-table-column prop="id" label="Id" />
-      <el-table-column prop="name" label="과목"/>
-      <el-table-column prop="levelName" label="등급(학년)" />
-      <el-table-column width="220px" label="관리" align="center">
-        <template slot-scope="{row}">
-          <router-link :to="{path:'/education/subject/edit', query:{id:row.id}}" class="link-left">
-            <el-button size="mini">수정</el-button>
-          </router-link>
-          <el-button size="mini" type="danger"  class="link-left">삭제</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="queryParam.pageIndex" :limit.sync="queryParam.pageSize"
-                @pagination="search"/>
+    <q-table
+      :rows="tableData"
+      :columns="columns"
+      :loading="listLoading"
+      row-key="id"
+      flat
+      bordered
+      hide-bottom
+      v-model:pagination="tablePagination"
+    >
+      <template v-slot:body-cell-actions="{ row }">
+        <q-td class="text-center">
+          <q-btn
+            size="sm"
+            flat
+            @click="$router.push({ path: '/education/subject/edit', query: { id: row.id } })"
+          >수정</q-btn>
+          <q-btn size="sm" flat color="negative" @click="deleteSubject(row)" class="q-ml-xs">삭제</q-btn>
+        </q-td>
+      </template>
+    </q-table>
+
+    <pagination
+      v-show="total > 0"
+      :total="total"
+      v-model:page="queryParam.pageIndex"
+      v-model:limit="queryParam.pageSize"
+      @pagination="search"
+    />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { useEnumItemStore } from '@/stores/enumItem'
 import Pagination from '@/components/Pagination'
 import subjectApi from '@/api/subject'
 
 export default {
   components: { Pagination },
+  setup () {
+    const enumItemStore = useEnumItemStore()
+    return { enumItemStore }
+  },
   data () {
     return {
-      queryParam: {
-        level: null,
-        pageIndex: 1,
-        pageSize: 10
-      },
+      queryParam: { userLevel: null, pageIndex: 1, pageSize: 10 },
       listLoading: true,
       tableData: [],
-      total: 0
+      total: 0,
+      tablePagination: { rowsPerPage: 0 },
+      columns: [
+        { name: 'id', field: 'id', label: 'Id', align: 'left' },
+        { name: 'name', field: 'name', label: '과목명', align: 'left' },
+        { name: 'levelName', field: 'levelName', label: '학년', align: 'left' },
+        { name: 'actions', label: '관리', align: 'center' }
+      ]
+    }
+  },
+  computed: {
+    levelOptions () {
+      return this.enumItemStore.user.levelEnum.map(e => ({ label: e.value, value: e.key }))
     }
   },
   created () {
@@ -63,20 +91,13 @@ export default {
         this.total = re.total
         this.queryParam.pageIndex = re.pageNum
         this.listLoading = false
-      })
+      }).catch(() => { this.listLoading = false })
     },
     submitForm () {
       this.queryParam.pageIndex = 1
       this.search()
-    }
-  },
-  computed: {
-    ...mapGetters('enumItem', [
-      'enumFormat'
-    ]),
-    ...mapState('enumItem', {
-      levelEnum: state => state.user.levelEnum
-    })
+    },
+    deleteSubject (row) {}
   }
 }
 </script>
